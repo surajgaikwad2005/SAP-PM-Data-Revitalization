@@ -1,0 +1,153 @@
+# The final recommendation rule (§5) — non-negotiable, enforced again in
+# validation.py's Pydantic validator. This file carries the numeric
+# threshold itself and every PP-specific Detection_Confidence band cited
+# in §5's tables, so a band change is a config edit, not a code edit.
+#
+# Confidence scale is 0.0-1.0 (client-specified, not 0-100): above
+# confidence_threshold the agent is asserting a review-clean
+# recommendation; at or below it, the Finding should be routed to human
+# review.
+confidence_threshold: 0.75
+confidence_when_null: 0.0
+
+# How many rows/pairs each run_ppN processes per logged batch — purely an
+# iteration/progress-visibility knob, never a detection-logic threshold.
+# Every pain point still evaluates its FULL dataset; this only controls
+# how often progress is logged and how the work is chunked internally.
+batch_size: 1000
+
+pp1:
+  reused_prefix_min_occurrences: 4    # §5 PP1 — MYVES$$2 pattern
+  detection_confidence_reused_prefix: 0.90
+  detection_confidence_non_platform_prefix: 0.20
+  # Check C (client-confirmed ground truth: BOKOR_10years Work Order
+  # Data) — a Task List whose historical Equipment usage resolves to a
+  # single, consistent Object Description that maps to one of UDMS §4.12
+  # Figure 5's 7 cited Pump codes gets a real corrected Group recommended
+  # (kept 4-char prefix + cited 4-char Object Type suffix). Every other
+  # equipment type (no cited code — only 7/448 Figure 5 entries are
+  # legible) is flagged via Detection_Confidence only, never fabricated.
+  historical_usage_confidence: 0.85
+  # Check D (client-confirmed, UDMS §9.4 p.61: "For SCE, the following
+  # similar rule shall be applied") — a Task List linked to an
+  # SCE-flagged Functional Location (BOKOR_10years Work Order Data's
+  # "SCE FL" column) is flagged for the distinct SCE naming branch.
+  # Flag-only: no SCE Group master/lookup table exists in any file
+  # available to this project, so the exact corrected code cannot be
+  # constructed or verified.
+  sce_naming_confidence: 0.65
+  # Case 5 (client-confirmed) — historical Work Order usage spans
+  # equipment descriptions with no shared Object Type family (genuinely
+  # inconsistent/ambiguous applicability, not merely an uncited naming
+  # gap). Flag-only: never guess a corrected Group when the underlying
+  # applicability itself is in question.
+  inconsistent_applicability_confidence: 0.60
+  # Check E (added 2026-09-28, real Equipment Class master + newer
+  # Bokor EQ list all - 28.09.2026.xlsx extract) — a Method-2 Task List
+  # Group (TA Planning Norm convention, e.g. "BOKOEHP") whose linked
+  # Equipment resolves via Catalog Profile to a DIFFERENT Equipment Class
+  # than the Group's own naming gets flagged. High confidence when the
+  # mismatch crosses top-level families (e.g. Electrical vs Mechanical);
+  # a real, but weaker, MEDIUM band when the resolved class shares the
+  # same top-level family as the Group's own naming (same discipline,
+  # different leaf class — a more forgivable naming imprecision). The
+  # non_standard_scheme value is a "cannot resolve" flag, not a mismatch
+  # confidence — Detection_Confidence only, never mapped to HIGH/MEDIUM/LOW
+  # since recommended_value stays None for that case.
+  equipment_class_high_confidence: 0.90
+  equipment_class_family_match_confidence: 0.60
+  equipment_class_non_standard_scheme_confidence: 0.50
+  # KG-native PP1 redesign (client-approved spec, 2026-09-28) — replaces
+  # old Check A (platform-prefix-only) and old Check E (Excel-bridge-file
+  # Equipment Class check) with a single deterministic check
+  # (validation.py's run_pp1_kg_naming_check) that resolves BOTH platform
+  # and Equipment Class from the live KG's actually-linked, non-DLFL/
+  # non-INAC Equipment. equipment_class_high_confidence above is reused
+  # verbatim for a real deterministic mismatch (EQUIPMENT_CLASS_MISMATCH/
+  # PREFIX_MISMATCH/NAMING_MISMATCH) or a clean match, since spec step 12
+  # only ever calls that HIGH ("convention known + platform known + all
+  # active Equipment agree on one valid class" — never a partial/
+  # family-level match, unlike the old Check E). The two new keys below
+  # are for genuine review flags only (never carry a Group suggestion):
+  pp1_kg_medium_confidence: 0.65   # reserved — not currently reached by any review-flag branch (every review flag uses pp1_kg_review_confidence instead), kept for a future partial-evidence case
+  pp1_kg_review_confidence: 0.55  # EQUIPMENT_CLASS_UNRESOLVED / MULTIPLE_EQUIPMENT_CLASSES_REVIEW / NAMING_CONVENTION_REVIEW — Detection_Confidence only, recommended_value always None
+  # Step 13 (precedence/suppression) — when the KG-native check above
+  # genuinely could not resolve (or never ran), Check C's 10-year
+  # historical usage may still support a review flag, but must be forced
+  # to LOW confidence and must never populate PP1_Suggest_Group on its
+  # own, per spec's explicit repeated instruction. Deliberately below
+  # confidence_label's own 0.5 LOW cutoff (validation.py) so this can
+  # never accidentally read as MEDIUM/HIGH.
+  pp1_historical_review_confidence: 0.35
+
+# pp2 block removed (2026-09-24): the client-redesigned PP2
+# (operation-level Work Centre via Deep Agent semantic classification of
+# OPDESC+LONGTEXT — validation.py's run_pp2/_pp2_bokor_work_centres) no
+# longer takes any of these thresholds. It still keeps PP2's original
+# never-NULL recommendation exception (confirmed with client — echoes
+# back the current value at Low confidence rather than leaving
+# recommended_value blank), but the HIGH/MEDIUM/LOW confidence bands are
+# now the Deep Agent's own self-reported confidence, mapped to scores via
+# run_pp2's computed_confidence parameter (default {"HIGH": 0.9,
+# "MEDIUM": 0.65, "LOW": 0.4} in validation.py) rather than read from
+# this file. If PP2's confidence scores ever need to be config-driven
+# again, add a new pp2: block here and thread it through run_pp2's
+# computed_confidence parameter — do not resurrect the old keys below,
+# they described dominant-discipline-by-summed-hours logic that no
+# longer exists:
+#   detection_confidence_no_operations_found, detection_confidence_not_in_approved_family,
+#   confidence_item_level_recommendation, detection_confidence_operation_level_multi,
+#   confidence_echo_current_value, confidence_computed_not_approved,
+#   tie_margin_threshold, tie_confidence
+
+# pp3 block removed (2026-09-25): the client-redesigned PP3
+# (deterministic Task List -> HAS_OPERATION / MaintenanceItem ->
+# USES_TASK_LIST relationship check — validation.py's run_pp3) no
+# longer takes any Excel/agent_a-derived thresholds; it reads only
+# real KG edges. Its two confidence tiers (0.85 fully-resolved, 0.50
+# incomplete-lookup) are set directly in run_pp3, not config-driven.
+# The old keys below described Bokor Task List Group.xlsx/agent_a
+# FLOC-Equipment System Status logic that no longer exists — do not
+# resurrect them: detection_confidence_with_mplan_evidence,
+# detection_confidence_no_evidence, detection_confidence_inactive_asset,
+# unknown_status_detection_confidence.
+
+# pp4 block removed (2026-09-25): the client-redesigned PP4
+# (candidate-pair pre-filtering + exact-text match + Deep Agent only
+# for ambiguous operation pairs — validation.py's run_pp4) no longer
+# takes a single text_similarity_threshold; matching is now per-
+# operation (exact-match or real semantic LLM comparison), not a
+# whole-Task-List similarity ratio. The old keys below described the
+# prior all-pairs/bridge-Object-Description-similarity logic that no
+# longer exists — do not resurrect them: text_similarity_threshold,
+# confidence_bridge_linked_strong_match,
+# detection_confidence_unlinked_text_match.
+
+pp5:
+  confidence_formula_correction: 1.0
+  detection_confidence_range_suspicious: 0.90
+  work_tolerance: 0.01   # numeric tolerance for the WORK == PERSON x DURATION check
+  # Minimum execution_verified historical matches with candidate_hours
+  # required before a historical benchmark is recommended, rather than
+  # Needs Review — set conservatively pending the real Step 2 coverage
+  # run (2026-09-16: execution_verified_count was 0 for all 2,871
+  # operations surveyed at that time, since neither historical source had
+  # an operation-level description field comparable to Task List OPDESC
+  # — see scripts/coverage_report.py's known_limitation and
+  # docs/plans/2026-09-15-pp5-resolution-plan.md §10 D3/D4).
+  # UPDATE 2026-09-23: the BOKOR PPM Listing integration
+  # (ground_truth_cache/BOKOR_PPM_Listing_2016_2025.xlsx, app.py) added
+  # 58,924 real PPM-order Operation Line rows with descriptions/hours —
+  # a real pipeline run against live data now shows 1424/1813 operations
+  # with SOME PP5 finding (999 still insufficient_evidence, 425 with a
+  # real suggestion), so this gap is now partially, not fully, closed.
+  # The threshold itself is still not the blocker for the remaining gap.
+  min_comparable_executions: 3
+  historical_benchmark_confidence: 0.6   # MEDIUM band (client's own 0.6-0.8 definition) — historical evidence is real but not as strong as the deterministic arithmetic check's 1.0
+
+pp6:
+  detection_confidence_strategy_mismatch: 0.95
+  detection_confidence_coverage_gap: 0.85
+
+pp7:
+  confidence_populated_plan: 1.0

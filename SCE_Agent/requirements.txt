@@ -1,0 +1,9 @@
+# code/agent + code/extraction
+pandas
+openpyxl
+pymupdf
+python-docx
+requests
+python-dotenv
+openai>=1.0
+langfuse>=4.0

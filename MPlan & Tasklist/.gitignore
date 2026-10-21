@@ -1,0 +1,6 @@
+__pycache__/
+*.pyc
+.env
+ground_truth_cache/*.md
+output/*.xlsx
+output/*.xlsm

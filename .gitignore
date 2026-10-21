@@ -1,0 +1,9 @@
+# Ignore environment files across all agents
+**/.env
+**/.env.*
+**/env
+**/env.*
+
+# Allow example templates
+!.env.example
+!**/.env.example

@@ -1,0 +1,824 @@
+<title>Bokor PM Graph</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Oswald:wght@500;600;700&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&family=IBM+Plex+Mono:wght@400;500;600&display=swap');
+
+  :root {
+    --paper: #EEEAE0;
+    --paper-raised: #F7F4EC;
+    --line: #D6CFBC;
+    --line-strong: #B9AF95;
+    --ink: #201C16;
+    --ink-soft: #5B564C;
+    --steel: #3D6470;
+    --amber: #A8631F;
+    --amber-soft: #A8631F;
+    --code-bg: #E5E0D2;
+    --shadow: 0 1px 0 rgba(32,28,22,0.06);
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --paper: #1A1D20;
+      --paper-raised: #21252A;
+      --line: #363B40;
+      --line-strong: #4A5057;
+      --ink: #E9E6DD;
+      --ink-soft: #A8A297;
+      --steel: #8FB9C4;
+      --amber: #D89544;
+      --amber-soft: #D89544;
+      --code-bg: #262A2F;
+      --shadow: 0 1px 0 rgba(0,0,0,0.3);
+    }
+  }
+  :root[data-theme="dark"] {
+    --paper: #1A1D20;
+    --paper-raised: #21252A;
+    --line: #363B40;
+    --line-strong: #4A5057;
+    --ink: #E9E6DD;
+    --ink-soft: #A8A297;
+    --steel: #8FB9C4;
+    --amber: #D89544;
+    --amber-soft: #D89544;
+    --code-bg: #262A2F;
+    --shadow: 0 1px 0 rgba(0,0,0,0.3);
+  }
+
+  * { box-sizing: border-box; }
+  body {
+    background: var(--paper);
+    color: var(--ink);
+    font-family: 'Source Serif 4', Georgia, 'Times New Roman', serif;
+    font-size: 16px;
+    line-height: 1.6;
+  }
+  ::selection { background: var(--amber); color: var(--paper); }
+
+  .sheet-shell {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 40px 24px 100px;
+  }
+
+  h1, h2, h3, .label-face {
+    font-family: 'Oswald', 'Arial Narrow', sans-serif;
+    text-transform: uppercase;
+    text-wrap: balance;
+    letter-spacing: 0.02em;
+  }
+
+  code, .mono, .node-id, td.num, .qty {
+    font-family: 'IBM Plex Mono', ui-monospace, monospace;
+    font-variant-numeric: tabular-nums;
+  }
+
+  /* ---------- Title block ---------- */
+  .titleblock {
+    border: 1px solid var(--line-strong);
+    background: var(--paper-raised);
+    box-shadow: var(--shadow);
+  }
+  .titleblock-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 24px;
+    padding: 22px 26px 18px;
+    border-bottom: 1px solid var(--line);
+  }
+  .titleblock .project {
+    font-family: 'Oswald', sans-serif;
+    font-size: 12.5px;
+    letter-spacing: 0.14em;
+    color: var(--ink-soft);
+    text-transform: uppercase;
+  }
+  .titleblock h1 {
+    margin: 6px 0 0;
+    font-size: clamp(28px, 4.2vw, 40px);
+    font-weight: 700;
+    line-height: 1.05;
+    color: var(--ink);
+  }
+  .titleblock .subtitle {
+    margin-top: 8px;
+    font-family: 'Source Serif 4', serif;
+    font-style: italic;
+    color: var(--ink-soft);
+    font-size: 16.5px;
+    max-width: 60ch;
+  }
+  .rev-box {
+    flex-shrink: 0;
+    text-align: right;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 12px;
+    color: var(--ink-soft);
+    line-height: 1.9;
+    white-space: nowrap;
+  }
+  .rev-box b { color: var(--ink); font-weight: 600; }
+  .titleblock-meta {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 12px;
+  }
+  .titleblock-meta div {
+    padding: 10px 16px;
+    border-right: 1px solid var(--line);
+  }
+  .titleblock-meta div:last-child { border-right: none; }
+  .titleblock-meta .k {
+    display: block;
+    color: var(--ink-soft);
+    font-size: 10px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin-bottom: 3px;
+  }
+
+  /* ---------- Sheet index ---------- */
+  .index {
+    margin: 36px 0 56px;
+    border-top: 1px solid var(--line-strong);
+    border-bottom: 1px solid var(--line-strong);
+  }
+  .index ol {
+    list-style: none;
+    margin: 0; padding: 0;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .index li { border-bottom: 1px solid var(--line); }
+  .index li:nth-child(odd) { border-right: 1px solid var(--line); }
+  .index a {
+    display: flex;
+    gap: 12px;
+    align-items: baseline;
+    padding: 12px 16px;
+    color: var(--ink);
+    text-decoration: none;
+  }
+  .index a:hover, .index a:focus-visible { background: var(--code-bg); }
+  .index .no {
+    font-family: 'IBM Plex Mono', monospace;
+    color: var(--amber);
+    font-size: 13px;
+    font-weight: 600;
+  }
+  .index .t {
+    font-family: 'Oswald', sans-serif;
+    font-size: 13.5px;
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+  }
+
+  /* ---------- Sheets ---------- */
+  section.sheet {
+    padding: 56px 0 8px;
+    border-top: 1px solid var(--line);
+    scroll-margin-top: 20px;
+  }
+  section.sheet:first-of-type { border-top: none; }
+  .sheet-head {
+    display: flex;
+    align-items: baseline;
+    gap: 14px;
+    margin-bottom: 22px;
+  }
+  .sheet-no {
+    font-family: 'IBM Plex Mono', monospace;
+    color: var(--amber);
+    font-size: 14px;
+    font-weight: 600;
+    flex-shrink: 0;
+  }
+  .sheet-head h2 {
+    font-size: clamp(20px, 3vw, 26px);
+    font-weight: 600;
+    margin: 0;
+    color: var(--ink);
+  }
+
+  p { max-width: 68ch; }
+  p.lead {
+    font-size: 18px;
+    color: var(--ink-soft);
+    max-width: 62ch;
+  }
+  strong { color: var(--ink); font-weight: 600; }
+  a.inline { color: var(--steel); }
+
+  .callout {
+    max-width: 68ch;
+    border-left: 3px solid var(--amber);
+    background: var(--paper-raised);
+    padding: 14px 18px;
+    margin: 20px 0;
+    font-size: 15px;
+  }
+  .callout .k {
+    display: block;
+    font-family: 'Oswald', sans-serif;
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--amber);
+    margin-bottom: 5px;
+  }
+
+  /* ---------- Tables ---------- */
+  .twrap { overflow-x: auto; margin: 22px 0; }
+  table {
+    border-collapse: collapse;
+    width: 100%;
+    font-size: 14.5px;
+  }
+  th, td {
+    text-align: left;
+    padding: 9px 14px;
+    border-bottom: 1px solid var(--line);
+    vertical-align: top;
+  }
+  th {
+    font-family: 'Oswald', sans-serif;
+    font-size: 11px;
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    border-bottom: 1px solid var(--line-strong);
+    font-weight: 500;
+  }
+  td.num, th.num { text-align: right; }
+  tr:hover td { background: var(--code-bg); }
+  .node-id {
+    display: inline-block;
+    background: var(--code-bg);
+    border: 1px solid var(--line);
+    padding: 1px 6px;
+    font-size: 12.5px;
+    border-radius: 2px;
+    white-space: nowrap;
+  }
+  .node-id.fl { color: var(--steel); }
+  .node-id.amber-text { color: var(--amber); }
+
+  /* ---------- Diagram ---------- */
+  figure.diagram { margin: 28px 0 8px; }
+  .diagram-frame {
+    border: 1px solid var(--line-strong);
+    background: var(--paper-raised);
+    padding: 8px;
+  }
+  svg.graph text { font-family: 'IBM Plex Mono', monospace; }
+  figcaption {
+    margin-top: 12px;
+    font-size: 13.5px;
+    color: var(--ink-soft);
+    max-width: 68ch;
+  }
+  figcaption .swatch {
+    display: inline-block;
+    width: 10px; height: 10px;
+    margin-right: 5px;
+    vertical-align: middle;
+  }
+
+  /* ---------- Prop lists ---------- */
+  .propcard {
+    border: 1px solid var(--line);
+    background: var(--paper-raised);
+    margin: 16px 0;
+  }
+  .propcard summary {
+    cursor: pointer;
+    list-style: none;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 12px 16px;
+    font-family: 'Oswald', sans-serif;
+    font-size: 14px;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+  }
+  .propcard summary::-webkit-details-marker { display: none; }
+  .propcard summary .id {
+    font-family: 'IBM Plex Mono', monospace;
+    color: var(--amber);
+    text-transform: none;
+    font-size: 13px;
+  }
+  .propcard summary::after {
+    content: "+";
+    font-family: 'IBM Plex Mono', monospace;
+    color: var(--ink-soft);
+    font-size: 16px;
+  }
+  .propcard[open] summary::after { content: "–"; }
+  .propcard .body {
+    padding: 4px 16px 16px;
+    border-top: 1px solid var(--line);
+  }
+  .proplist {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px 8px;
+    margin-top: 10px;
+    font-size: 12.5px;
+  }
+  .proplist span {
+    font-family: 'IBM Plex Mono', monospace;
+    background: var(--code-bg);
+    border: 1px solid var(--line);
+    padding: 2px 7px;
+    border-radius: 2px;
+    color: var(--ink-soft);
+  }
+  .proplist span.num { color: var(--steel); border-color: var(--steel); }
+  .proplist span.date { color: var(--amber); border-color: var(--amber); }
+  .legend-mini { font-size: 12px; color: var(--ink-soft); margin-top: 8px; }
+
+  /* ---------- Query code blocks ---------- */
+  pre {
+    background: var(--code-bg);
+    border: 1px solid var(--line);
+    padding: 14px 16px;
+    overflow-x: auto;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 13px;
+    line-height: 1.65;
+    color: var(--ink);
+  }
+  pre .kw { color: var(--steel); }
+  pre .cm { color: var(--ink-soft); font-style: italic; }
+
+  /* ---------- Stat strip ---------- */
+  .stats {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1px;
+    background: var(--line-strong);
+    border: 1px solid var(--line-strong);
+    margin: 22px 0;
+  }
+  .stats .cell {
+    background: var(--paper-raised);
+    padding: 16px 14px;
+  }
+  .stats .cell .v {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 24px;
+    font-weight: 600;
+    color: var(--amber);
+    font-variant-numeric: tabular-nums;
+  }
+  .stats .cell .l {
+    font-family: 'Oswald', sans-serif;
+    font-size: 10.5px;
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    margin-top: 4px;
+  }
+
+  footer {
+    margin-top: 70px;
+    padding-top: 18px;
+    border-top: 1px solid var(--line-strong);
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11.5px;
+    color: var(--ink-soft);
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  @media (max-width: 620px) {
+    .titleblock-top { flex-direction: column; }
+    .rev-box { text-align: left; }
+    .titleblock-meta { grid-template-columns: repeat(2, 1fr); }
+    .index ol { grid-template-columns: 1fr; }
+    .index li:nth-child(odd) { border-right: none; }
+    .stats { grid-template-columns: repeat(2, 1fr); }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    * { scroll-behavior: auto !important; }
+  }
+</style>
+
+<div class="sheet-shell">
+
+  <div class="titleblock">
+    <div class="titleblock-top">
+      <div>
+        <div class="project">Petronas Carigali &middot; Bokor Field &middot; SAP PM Data Revitalization</div>
+        <h1>Bokor PM Knowledge&nbsp;Graph</h1>
+        <div class="subtitle">Schema &amp; architecture reference — how SAP Plant Maintenance data is represented as a relational graph in PostgreSQL, and how each new dataset connects to what's already there.</div>
+      </div>
+      <div class="rev-box">
+        <div>Doc <b>KG&#8209;SCHEMA&#8209;01</b></div>
+        <div>Rev. <b>3</b></div>
+        <div>Sept 2026</div>
+      </div>
+    </div>
+    <div class="titleblock-meta">
+      <div><span class="k">Database</span>PostgreSQL only<br>(no graph DB)</div>
+      <div><span class="k">Tables</span>4, generic</div>
+      <div><span class="k">Node types</span>8 live</div>
+      <div><span class="k">Relationships</span>13 typed edges</div>
+    </div>
+  </div>
+
+  <nav class="index" aria-label="Sheet index">
+    <ol>
+      <li><a href="#sheet-01"><span class="no">01</span><span class="t">Why a relational graph</span></a></li>
+      <li><a href="#sheet-02"><span class="no">02</span><span class="t">The four tables</span></a></li>
+      <li><a href="#sheet-03"><span class="no">03</span><span class="t">Eight node types</span></a></li>
+      <li><a href="#sheet-04"><span class="no">04</span><span class="t">The relationship graph</span></a></li>
+      <li><a href="#sheet-05"><span class="no">05</span><span class="t">Conventions that make it work</span></a></li>
+      <li><a href="#sheet-06"><span class="no">06</span><span class="t">Data sources</span></a></li>
+      <li><a href="#sheet-07"><span class="no">07</span><span class="t">Current scale &amp; queries</span></a></li>
+    </ol>
+  </nav>
+
+  <!-- ===================== SHEET 01 ===================== -->
+  <section class="sheet" id="sheet-01">
+    <div class="sheet-head"><span class="sheet-no">01</span><h2>Why a relational graph, not a graph database</h2></div>
+    <p class="lead">The brief ruled out Neo4j, Neptune, and anything graph-native. Everything here runs on the same Azure PostgreSQL Flexible Server the rest of the project already uses.</p>
+    <p>SAP Plant Maintenance is naturally a network — a Functional Location contains Equipment, a Maintenance Plan schedules Items against that Equipment, a Task List tells the Item what to do, and Work Orders and Notifications reference all of it. Modelling that as a graph is the right call. Running it on a dedicated graph engine is not, when the data already lives in Postgres and the team already knows SQL.</p>
+    <p>So the graph is built from four small, generic tables instead of one bespoke table per SAP entity. The payoff shows up every time a new dataset gets added: Functional Location and Equipment shipped first, then Maintenance Plans/Items/Task Lists, then Work Orders and Notifications — and <strong>none of those additions changed the schema.</strong> Each one is a new <code>node_type</code>, a few new <code>relationship</code> values, and a loader file that looks like the ones before it.</p>
+  </section>
+
+  <!-- ===================== SHEET 02 ===================== -->
+  <section class="sheet" id="sheet-02">
+    <div class="sheet-head"><span class="sheet-no">02</span><h2>The four tables</h2></div>
+    <p>Every entity, every relationship, every attribute — SAP Functional Location or a Work Order created next year — lands in one of these four tables. No entity ever gets its own table.</p>
+    <div class="twrap">
+      <table>
+        <thead><tr><th>Table</th><th>Holds</th><th>Key columns</th></tr></thead>
+        <tbody>
+          <tr><td><strong>nodes</strong></td><td>One row per entity of any type — a Functional Location, an Equipment, a Work Order…</td><td><code>node_id</code> (PK), <code>node_type</code>, <code>natural_key</code>, <code>updated_at</code></td></tr>
+          <tr><td><strong>node_properties</strong></td><td>Every attribute of every node, as name/value pairs (EAV)</td><td><code>node_id</code> + <code>property_name</code> (PK), <code>value_text</code> / <code>value_num</code> / <code>value_date</code></td></tr>
+          <tr><td><strong>edges</strong></td><td>Every relationship between two nodes</td><td><code>source_id</code>, <code>relationship</code>, <code>target_id</code> (unique together)</td></tr>
+          <tr><td><strong>edge_properties</strong></td><td>Reserved for relationship-level attributes — no dataset has needed one yet, so it's empty</td><td>same shape as node_properties, keyed by the edge</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p><strong>How the four tables physically connect</strong> — one foreign key, in one direction, and <code>edges</code> uses it twice (once as the relationship's source, once as its target):</p>
+
+    <figure class="diagram">
+      <div class="diagram-frame">
+        <svg class="graph" viewBox="0 0 1040 480" role="img" aria-label="Entity-relationship diagram of the four tables. node_properties.node_id references nodes.node_id. edges.source_id and edges.target_id both reference nodes.node_id — two separate foreign keys into the same table, since a relationship connects two nodes. edge_properties references the composite key (source_id, relationship, target_id) on edges.">
+          <defs>
+            <marker id="ah2" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+              <path d="M0,0 L10,5 L0,10 z" fill="currentColor"/>
+            </marker>
+          </defs>
+
+          <!-- FK arrows -->
+          <g fill="none" stroke="currentColor" stroke-width="1.4" opacity="0.85">
+            <path d="M170,300 C170,230 350,190 434,146" marker-end="url(#ah2)"/>
+            <path d="M450,300 C450,240 470,200 494,146" marker-end="url(#ah2)"/>
+            <path d="M600,300 C600,240 580,200 556,146" marker-end="url(#ah2)"/>
+            <path d="M740,378 L654,340" marker-end="url(#ah2)"/>
+          </g>
+          <g font-size="11" fill="currentColor">
+            <text x="255" y="222" text-anchor="middle">node_id</text>
+            <text x="455" y="222" text-anchor="middle">source_id</text>
+            <text x="610" y="222" text-anchor="middle">target_id</text>
+            <text x="700" y="352" text-anchor="middle" font-size="10">(source_id, relationship,</text>
+            <text x="700" y="364" text-anchor="middle" font-size="10">target_id)</text>
+          </g>
+
+          <!-- nodes -->
+          <g font-family="'IBM Plex Mono', monospace">
+            <rect x="390" y="20" width="260" height="126" fill="var(--paper-raised)" stroke="currentColor" stroke-width="1.4"/>
+            <line x1="390" y1="46" x2="650" y2="46" stroke="currentColor" stroke-width="1"/>
+            <text x="520" y="38" text-anchor="middle" font-size="13" font-weight="600" font-family="'Oswald',sans-serif" letter-spacing="0.04em">NODES</text>
+            <text x="404" y="61" font-size="12" fill="var(--amber)">node_id</text><text x="636" y="61" font-size="10" text-anchor="end" fill="var(--ink-soft)">PK</text>
+            <text x="404" y="81" font-size="12">node_type</text>
+            <text x="404" y="101" font-size="12">natural_key</text>
+            <text x="404" y="121" font-size="12">updated_at</text>
+
+            <!-- node_properties -->
+            <rect x="30" y="300" width="280" height="146" fill="var(--paper-raised)" stroke="currentColor" stroke-width="1.4"/>
+            <line x1="30" y1="326" x2="310" y2="326" stroke="currentColor" stroke-width="1"/>
+            <text x="170" y="318" text-anchor="middle" font-size="13" font-weight="600" font-family="'Oswald',sans-serif" letter-spacing="0.04em">NODE_PROPERTIES</text>
+            <text x="44" y="341" font-size="12" fill="var(--amber)">node_id</text><text x="296" y="341" font-size="10" text-anchor="end" fill="var(--ink-soft)">PK, FK</text>
+            <text x="44" y="361" font-size="12" fill="var(--amber)">property_name</text><text x="296" y="361" font-size="10" text-anchor="end" fill="var(--ink-soft)">PK</text>
+            <text x="44" y="381" font-size="12">value_text</text>
+            <text x="44" y="401" font-size="12">value_num</text>
+            <text x="44" y="421" font-size="12">value_date &nbsp;/&nbsp; updated_at</text>
+
+            <!-- edges -->
+            <rect x="380" y="300" width="270" height="126" fill="var(--paper-raised)" stroke="currentColor" stroke-width="1.4"/>
+            <line x1="380" y1="326" x2="650" y2="326" stroke="currentColor" stroke-width="1"/>
+            <text x="515" y="318" text-anchor="middle" font-size="13" font-weight="600" font-family="'Oswald',sans-serif" letter-spacing="0.04em">EDGES</text>
+            <text x="394" y="341" font-size="12" fill="var(--amber)">source_id</text><text x="636" y="341" font-size="10" text-anchor="end" fill="var(--ink-soft)">FK &#8594; nodes</text>
+            <text x="394" y="361" font-size="12">relationship</text>
+            <text x="394" y="381" font-size="12" fill="var(--amber)">target_id</text><text x="636" y="381" font-size="10" text-anchor="end" fill="var(--ink-soft)">FK &#8594; nodes</text>
+            <text x="394" y="401" font-size="12">updated_at</text>
+            <text x="394" y="418" font-size="9.5" fill="var(--ink-soft)">UNIQUE(source_id, relationship, target_id)</text>
+
+            <!-- edge_properties -->
+            <rect x="740" y="300" width="280" height="166" fill="var(--paper-raised)" stroke="currentColor" stroke-width="1.4"/>
+            <line x1="740" y1="326" x2="1020" y2="326" stroke="currentColor" stroke-width="1"/>
+            <text x="880" y="318" text-anchor="middle" font-size="13" font-weight="600" font-family="'Oswald',sans-serif" letter-spacing="0.04em">EDGE_PROPERTIES</text>
+            <text x="754" y="341" font-size="11.5" fill="var(--amber)">source_id, relationship,</text>
+            <text x="754" y="356" font-size="11.5" fill="var(--amber)">target_id</text><text x="1006" y="349" font-size="10" text-anchor="end" fill="var(--ink-soft)">PK, FK</text>
+            <text x="754" y="376" font-size="12" fill="var(--amber)">property_name</text><text x="1006" y="376" font-size="10" text-anchor="end" fill="var(--ink-soft)">PK</text>
+            <text x="754" y="396" font-size="12">value_text / value_num</text>
+            <text x="754" y="416" font-size="12">value_date / updated_at</text>
+            <text x="754" y="435" font-size="9.5" fill="var(--ink-soft)">reserved — empty in every load so far</text>
+          </g>
+        </svg>
+      </div>
+      <figcaption>Everything hangs off <strong>nodes</strong>: properties reference it once per node, edges reference it twice per relationship (source and target), and edge_properties references the edge's full composite key. Every FK is <code>ON DELETE CASCADE</code> — delete a node and its properties and any edge touching it go with it.</figcaption>
+    </figure>
+
+    <details class="propcard">
+      <summary><span>View the literal <code>CREATE TABLE</code> statements</span><span class="id">schema.sql</span></summary>
+      <div class="body">
+<pre><span class="kw">CREATE TABLE IF NOT EXISTS</span> nodes (
+    node_id     TEXT <span class="kw">PRIMARY KEY</span>,
+    node_type   TEXT <span class="kw">NOT NULL</span>,
+    natural_key TEXT <span class="kw">NOT NULL</span>,
+    updated_at  TIMESTAMPTZ <span class="kw">NOT NULL DEFAULT</span> now()
+);
+
+<span class="kw">CREATE TABLE IF NOT EXISTS</span> node_properties (
+    node_id       TEXT <span class="kw">NOT NULL REFERENCES</span> nodes(node_id) <span class="kw">ON DELETE CASCADE</span>,
+    property_name TEXT <span class="kw">NOT NULL</span>,
+    value_text    TEXT,
+    value_num     NUMERIC,
+    value_date    TIMESTAMPTZ,
+    updated_at    TIMESTAMPTZ <span class="kw">NOT NULL DEFAULT</span> now(),
+    <span class="kw">PRIMARY KEY</span> (node_id, property_name)
+);
+
+<span class="kw">CREATE TABLE IF NOT EXISTS</span> edges (
+    source_id    TEXT <span class="kw">NOT NULL REFERENCES</span> nodes(node_id) <span class="kw">ON DELETE CASCADE</span>,
+    relationship TEXT <span class="kw">NOT NULL</span>,
+    target_id    TEXT <span class="kw">NOT NULL REFERENCES</span> nodes(node_id) <span class="kw">ON DELETE CASCADE</span>,
+    updated_at   TIMESTAMPTZ <span class="kw">NOT NULL DEFAULT</span> now(),
+    <span class="kw">UNIQUE</span> (source_id, relationship, target_id)
+);
+<span class="kw">CREATE INDEX IF NOT EXISTS</span> idx_edges_source <span class="kw">ON</span> edges (source_id);
+<span class="kw">CREATE INDEX IF NOT EXISTS</span> idx_edges_target <span class="kw">ON</span> edges (target_id);
+
+<span class="kw">CREATE TABLE IF NOT EXISTS</span> edge_properties (
+    source_id     TEXT <span class="kw">NOT NULL</span>,
+    relationship  TEXT <span class="kw">NOT NULL</span>,
+    target_id     TEXT <span class="kw">NOT NULL</span>,
+    property_name TEXT <span class="kw">NOT NULL</span>,
+    value_text    TEXT,
+    value_num     NUMERIC,
+    value_date    TIMESTAMPTZ,
+    updated_at    TIMESTAMPTZ <span class="kw">NOT NULL DEFAULT</span> now(),
+    <span class="kw">PRIMARY KEY</span> (source_id, relationship, target_id, property_name),
+    <span class="kw">FOREIGN KEY</span> (source_id, relationship, target_id)
+        <span class="kw">REFERENCES</span> edges (source_id, relationship, target_id) <span class="kw">ON DELETE CASCADE</span>
+);</pre>
+      </div>
+    </details>
+
+    <p><strong>node_id is always deterministic</strong> — a short type prefix plus the SAP identifier, never a random ID. Re-loading the same SAP record always produces the same node_id, which is what makes the whole pipeline safe to re-run:</p>
+    <div class="twrap">
+      <table>
+        <thead><tr><th>Pattern</th><th>Example</th><th>Reads as</th></tr></thead>
+        <tbody>
+          <tr><td><code>FL:&lt;code&gt;</code></td><td><span class="node-id fl">FL:BOVA.STU.TOP.PRIMARY</span></td><td>Functional Location BOVA.STU.TOP.PRIMARY</td></tr>
+          <tr><td><code>EQ:&lt;code&gt;</code></td><td><span class="node-id">EQ:30166</span></td><td>Equipment 30166</td></tr>
+          <tr><td><code>TL:&lt;Group&gt;-&lt;Counter&gt;</code></td><td><span class="node-id">TL:BODA003-6</span></td><td>Task List, Group BODA003, Counter 6 — a composite key, still deterministic</td></tr>
+          <tr><td><code>WO:&lt;Order&gt;</code></td><td><span class="node-id">WO:82750072</span></td><td>Work Order 82750072</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p>Why EAV for properties instead of a real column per attribute: SAP's own attribute set for Equipment isn't the same as for a Notification, and it isn't fixed even within one entity type over time. EAV means a new attribute is a new row, never a schema migration — the same reason the whole graph is 4 tables instead of dozens.</p>
+  </section>
+
+  <!-- ===================== SHEET 03 ===================== -->
+  <section class="sheet" id="sheet-03">
+    <div class="sheet-head"><span class="sheet-no">03</span><h2>Eight node types</h2></div>
+    <p>Two asset-structure types, four planning types, two transactional types — loaded in that order, each phase building on the last.</p>
+    <div class="twrap">
+      <table>
+        <thead><tr><th>node_type</th><th>node_id</th><th>Source file</th><th class="num">Nodes loaded</th></tr></thead>
+        <tbody>
+          <tr><td>FunctionalLocation</td><td><code>FL:&lt;code&gt;</code></td><td>FL Listing (Asset Master)</td><td class="num qty">33,158</td></tr>
+          <tr><td>Equipment</td><td><code>EQ:&lt;code&gt;</code></td><td>Equipment Listing (Asset Master)</td><td class="num qty">23,965</td></tr>
+          <tr><td>MaintenancePlan</td><td><code>MP:&lt;plan&gt;</code></td><td>Bokor Task List Group.xlsx</td><td class="num qty">4,274</td></tr>
+          <tr><td>MaintenanceItem</td><td><code>MI:&lt;item&gt;</code></td><td>Bokor Task List Group.xlsx</td><td class="num qty">5,823</td></tr>
+          <tr><td>TaskList</td><td><code>TL:&lt;Group&gt;-&lt;Counter&gt;</code></td><td>Task List Group.xlsx + Long Text + MPLAN (enrichment)</td><td class="num qty">951</td></tr>
+          <tr><td>TaskListOperation</td><td><code>TLOP:&lt;Group&gt;-&lt;Counter&gt;-&lt;Op&gt;</code></td><td>Bokor Long Text_Aug26_LATEST.xlsm</td><td class="num qty">1,813</td></tr>
+          <tr><td>WorkOrder</td><td><code>WO:&lt;Order&gt;</code></td><td>BOKOR_10years Work Order Data_Aug26.xlsx</td><td class="num qty">73,662</td></tr>
+          <tr><td>Notification</td><td><code>NOTIF:&lt;Notification&gt;</code></td><td>M014_WO_NN Listing … → <em>Notification</em> sheet, BOKOR-filtered</td><td class="num qty">5,578</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="callout">
+      <span class="k">Stub nodes</span>
+      A record can reference something outside its own source file's coverage — a Work Order pointing at a Maintenance Item that isn't in the current Task List extract, say. Rather than drop the reference, we create an <strong>identity-only stub</strong> (no properties) and upgrade it automatically the moment that record shows up in a future load. No entity is ever silently unlinked.
+    </div>
+  </section>
+
+  <!-- ===================== SHEET 04 ===================== -->
+  <section class="sheet" id="sheet-04">
+    <div class="sheet-head"><span class="sheet-no">04</span><h2>The relationship graph</h2></div>
+    <p>Thirteen typed, directed edges connect the eight node types. Two of them — <code>FOR_FUNCTIONAL_LOCATION</code> and <code>FOR_EQUIPMENT</code> — are <strong>reused by three different record types</strong> rather than reinvented per entity, which is the single most load-bearing decision in this design.</p>
+
+    <figure class="diagram">
+      <div class="diagram-frame">
+        <svg class="graph" viewBox="0 0 980 540" role="img" aria-label="Eight node types connected by thirteen relationships: FunctionalLocation and Equipment form the asset structure; MaintenancePlan, MaintenanceItem, TaskList and TaskListOperation form the planning chain; WorkOrder and Notification are transactional records. FOR_FUNCTIONAL_LOCATION and FOR_EQUIPMENT, shown in amber, are each sent by three different record types (MaintenanceItem, WorkOrder, Notification) into the same two asset nodes, rather than being separate relationship types per sender.">
+          <defs>
+            <marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+              <path d="M0,0 L10,5 L0,10 z" fill="currentColor"/>
+            </marker>
+            <marker id="ah-amber" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+              <path d="M0,0 L10,5 L0,10 z" fill="var(--amber)"/>
+            </marker>
+          </defs>
+
+          <!-- structural / unique edges -->
+          <g fill="none" stroke="currentColor" stroke-width="1.4" opacity="0.85">
+            <path d="M90,70 Q120,22 150,70" marker-end="url(#ah)"/>
+            <line x1="120" y1="120" x2="120" y2="316" marker-end="url(#ah)"/>
+            <line x1="465" y1="96" x2="465" y2="186" marker-end="url(#ah)"/>
+            <line x1="465" y1="236" x2="465" y2="326" marker-end="url(#ah)"/>
+            <line x1="465" y1="376" x2="465" y2="466" marker-end="url(#ah)"/>
+            <line x1="760" y1="213" x2="554" y2="213" marker-end="url(#ah)"/>
+            <line x1="845" y1="326" x2="845" y2="240" marker-end="url(#ah)"/>
+          </g>
+
+          <!-- FOR_FUNCTIONAL_LOCATION fan (amber) -->
+          <g fill="none" stroke="var(--amber)" stroke-width="1.3" opacity="0.85">
+            <line x1="380" y1="205" x2="214" y2="90" marker-end="url(#ah-amber)"/>
+            <line x1="760" y1="230" x2="214" y2="98" marker-end="url(#ah-amber)"/>
+            <line x1="760" y1="345" x2="214" y2="106" marker-end="url(#ah-amber)"/>
+          </g>
+          <!-- FOR_EQUIPMENT fan (amber) -->
+          <g fill="none" stroke="var(--amber)" stroke-width="1.3" opacity="0.85">
+            <line x1="380" y1="225" x2="214" y2="330" marker-end="url(#ah-amber)"/>
+            <line x1="760" y1="200" x2="214" y2="338" marker-end="url(#ah-amber)"/>
+            <line x1="760" y1="360" x2="214" y2="350" marker-end="url(#ah-amber)"/>
+          </g>
+
+          <!-- boxes -->
+          <g font-size="14" text-anchor="middle">
+            <rect x="30" y="70" width="180" height="50" rx="3" fill="var(--paper-raised)" stroke="currentColor" stroke-width="1.4"/>
+            <text x="120" y="91" font-weight="600">FunctionalLocation</text>
+            <text x="120" y="108" font-size="11" fill="var(--amber)">FL:&lt;code&gt;</text>
+
+            <rect x="30" y="320" width="180" height="50" rx="3" fill="var(--paper-raised)" stroke="currentColor" stroke-width="1.4"/>
+            <text x="120" y="341" font-weight="600">Equipment</text>
+            <text x="120" y="358" font-size="11" fill="var(--amber)">EQ:&lt;code&gt;</text>
+
+            <rect x="380" y="50" width="170" height="46" rx="3" fill="var(--paper-raised)" stroke="currentColor" stroke-width="1.4"/>
+            <text x="465" y="70" font-weight="600">MaintenancePlan</text>
+            <text x="465" y="87" font-size="11" fill="var(--amber)">MP:&lt;plan&gt;</text>
+
+            <rect x="380" y="190" width="170" height="46" rx="3" fill="var(--paper-raised)" stroke="currentColor" stroke-width="1.4"/>
+            <text x="465" y="210" font-weight="600">MaintenanceItem</text>
+            <text x="465" y="227" font-size="11" fill="var(--amber)">MI:&lt;item&gt;</text>
+
+            <rect x="380" y="330" width="170" height="46" rx="3" fill="var(--paper-raised)" stroke="currentColor" stroke-width="1.4"/>
+            <text x="465" y="350" font-weight="600">TaskList</text>
+            <text x="465" y="367" font-size="10.5" fill="var(--amber)">TL:&lt;Group&gt;-&lt;Ctr&gt;</text>
+
+            <rect x="380" y="470" width="170" height="46" rx="3" fill="var(--paper-raised)" stroke="currentColor" stroke-width="1.4"/>
+            <text x="465" y="490" font-weight="600">TaskListOperation</text>
+            <text x="465" y="507" font-size="10" fill="var(--amber)">TLOP:&lt;Grp&gt;-&lt;Ctr&gt;-&lt;Op&gt;</text>
+
+            <rect x="760" y="190" width="170" height="46" rx="3" fill="var(--paper-raised)" stroke="currentColor" stroke-width="1.4"/>
+            <text x="845" y="210" font-weight="600">WorkOrder</text>
+            <text x="845" y="227" font-size="11" fill="var(--amber)">WO:&lt;Order&gt;</text>
+
+            <rect x="760" y="330" width="170" height="46" rx="3" fill="var(--paper-raised)" stroke="currentColor" stroke-width="1.4"/>
+            <text x="845" y="350" font-weight="600">Notification</text>
+            <text x="845" y="367" font-size="10.5" fill="var(--amber)">NOTIF:&lt;Notification&gt;</text>
+          </g>
+
+          <!-- edge labels -->
+          <g font-size="11" fill="currentColor">
+            <text x="120" y="16" text-anchor="middle">HAS_SUBFLOC</text>
+            <text x="120" y="30" text-anchor="middle" font-size="9.5" fill="var(--ink-soft)">(parent &#8594; child)</text>
+            <text x="138" y="222" text-anchor="start">HAS_EQUIPMENT</text>
+            <text x="483" y="145" text-anchor="start">HAS_ITEM</text>
+            <text x="483" y="285" text-anchor="start">USES_TASK_LIST</text>
+            <text x="483" y="425" text-anchor="start">HAS_OPERATION</text>
+            <text x="655" y="200" text-anchor="middle">FOR_MAINTENANCE_ITEM</text>
+            <text x="862" y="285" text-anchor="start">TRIGGERED_ORDER</text>
+          </g>
+          <g font-size="11.5" fill="var(--amber)">
+            <text x="228" y="55" text-anchor="start" font-weight="600">FOR_FUNCTIONAL_LOCATION</text>
+            <text x="228" y="69" text-anchor="start" font-size="10">(&#215; 3 record types)</text>
+            <text x="228" y="400" text-anchor="start" font-weight="600">FOR_EQUIPMENT</text>
+            <text x="228" y="414" text-anchor="start" font-size="10">(&#215; 3 record types)</text>
+          </g>
+        </svg>
+      </div>
+      <figcaption>
+        <span class="swatch" style="background:var(--amber)"></span>Amber — <code>FOR_FUNCTIONAL_LOCATION</code> / <code>FOR_EQUIPMENT</code>, each sent by MaintenanceItem, WorkOrder, and Notification into the same two asset nodes: one relationship type, three senders, not three relationship types.
+        &nbsp;&nbsp;<span class="swatch" style="background:var(--ink); border:1px solid var(--line)"></span>Grey — structural (<code>HAS_*</code>, always parent&#8594;child) or single-source relationships.
+      </figcaption>
+    </figure>
+
+    <p><strong>Direction rule, applied without exception:</strong> structural hierarchy (<code>HAS_SUBFLOC</code>, <code>HAS_EQUIPMENT</code>, <code>HAS_ITEM</code>, <code>HAS_OPERATION</code>) always points parent&nbsp;&rarr;&nbsp;child. Every other relationship points from the transactional or planning <em>record</em> to the asset or entity it references — never the reverse. A Work Order points at the Functional Location it was raised against, not the other way around, because the Work Order's own row is what gets re-read on every load; the Functional Location doesn't carry a "current work order" field to re-read.</p>
+  </section>
+
+  <!-- ===================== SHEET 05 ===================== -->
+  <section class="sheet" id="sheet-05">
+    <div class="sheet-head"><span class="sheet-no">05</span><h2>Conventions that make it work</h2></div>
+
+    <h3 style="font-size:15px;letter-spacing:0.04em;margin-bottom:6px;">Incremental, never destructive</h3>
+    <p>Every load is a full re-read of the current SAP extract, reconciled against what's already in the graph — insert what's new, update what changed, leave the rest alone. Re-running the same file twice in a row produces zero changes the second time; that's the correctness check we use after every load.</p>
+
+    <h3 style="font-size:15px;letter-spacing:0.04em;margin-bottom:6px;margin-top:22px;">Reconciliation is scoped by whichever side is "re-read"</h3>
+    <p>For structural edges, the child is re-read each load (its parent link can change), so stale-edge cleanup is scoped by the <em>target</em>. For every <code>FOR_*</code>/<code>USES_*</code>/<code>TRIGGERED_*</code> edge, the record itself is what's re-read, so cleanup is scoped by the <em>source</em>. Get this backwards and a moved Equipment or a re-assigned Work Order leaves a stale edge behind instead of being cleanly replaced.</p>
+
+    <h3 style="font-size:15px;letter-spacing:0.04em;margin-bottom:6px;margin-top:22px;">Stub nodes never block a load</h3>
+    <p>A missing reference always becomes a stub, never a dropped edge or a failed load. When the real record eventually appears, it upserts into the <em>same deterministic node_id</em> the stub already used — there's no separate "un-stub" code path, because there's nothing to migrate.</p>
+
+    <h3 style="font-size:15px;letter-spacing:0.04em;margin-bottom:6px;margin-top:22px;">One property, one column, always the same one</h3>
+    <p>SAP occasionally exports the same identifier as a number in one column and as text in another — an Equipment number read as <code>30166</code> in one place and <code>"30166"</code> in another, or a Long Text line that happens to look like a bare number. Left alone, that flips a stored value between <code>"30166"</code> and <code>"30166.0"</code> across runs and reads as a spurious change. Every identifier and every text property is normalized through the same conversion before it's compared or stored, so identical SAP data always produces an identical row — a re-run genuinely reports zero changes instead of manufacturing phantom updates.</p>
+  </section>
+
+  <!-- ===================== SHEET 06 ===================== -->
+  <section class="sheet" id="sheet-06">
+    <div class="sheet-head"><span class="sheet-no">06</span><h2>Data sources</h2></div>
+    <div class="twrap">
+      <table>
+        <thead><tr><th>File</th><th>Feeds</th><th>BOKOR filter</th></tr></thead>
+        <tbody>
+          <tr><td>FL Listing_SKO_19June26.xlsx</td><td>FunctionalLocation</td><td>applied (<code>Location == 'BOKOR'</code>)</td></tr>
+          <tr><td>Equipment Listing_SKA_18June26.xlsx</td><td>Equipment</td><td>applied</td></tr>
+          <tr><td>Bokor Task List Group.xlsx</td><td>MaintenancePlan, MaintenanceItem, TaskList (identity)</td><td>pre-filtered</td></tr>
+          <tr><td>Bokor Long Text_Aug26_LATEST.xlsm</td><td>TaskListOperation, TaskList (tltype/strategy)</td><td>no Location column — scoped by Group+Counter membership in Task List Group.xlsx instead (its Plant code isn't Bokor-exclusive)</td></tr>
+          <tr><td>MPLAN BOKOR AUG26.xlsx</td><td>TaskList (completion-% enrichment, best-effort)</td><td>pre-filtered</td></tr>
+          <tr><td>BOKOR_10years Work Order Data_Aug26.xlsx</td><td>WorkOrder</td><td>pre-filtered</td></tr>
+          <tr><td>M014_WO_NN Listing_Jan2026_BOKOR.xlsx — <em>Notification</em> sheet</td><td>Notification</td><td>applied — this sheet is <strong>not</strong> pre-filtered like the others</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p style="font-size:14px;color:var(--ink-soft)"><em>Deferred, not part of the current schema:</em> <code>BOKOR Damage Part Cause Code.xlsx</code> — a richer damage/cause-code enrichment for a subset of Notifications, held back for a later pass.</p>
+  </section>
+
+  <!-- ===================== SHEET 07 ===================== -->
+  <section class="sheet" id="sheet-07">
+    <div class="sheet-head"><span class="sheet-no">07</span><h2>Current scale &amp; how to query it</h2></div>
+
+    <div class="stats">
+      <div class="cell"><div class="v">151,703</div><div class="l">Total nodes</div></div>
+      <div class="cell"><div class="v">293,029</div><div class="l">Total relationships</div></div>
+      <div class="cell"><div class="v">8</div><div class="l">Node types live</div></div>
+      <div class="cell"><div class="v">13</div><div class="l">Relationship types</div></div>
+    </div>
+
+    <p>Five query shapes cover most of what gets asked of the graph day to day:</p>
+    <pre>-- Children of a Functional Location
+<span class="kw">SELECT</span> target_id <span class="kw">FROM</span> edges
+<span class="kw">WHERE</span> source_id = 'FL:BOVA' <span class="kw">AND</span> relationship = 'HAS_SUBFLOC';
+
+-- Parent of a Functional Location
+<span class="kw">SELECT</span> source_id <span class="kw">FROM</span> edges
+<span class="kw">WHERE</span> target_id = 'FL:BOVA.STU' <span class="kw">AND</span> relationship = 'HAS_SUBFLOC';
+
+-- Equipment at a location
+<span class="kw">SELECT</span> target_id <span class="kw">FROM</span> edges
+<span class="kw">WHERE</span> source_id = 'FL:BOVA.STU.TOP.PRIMARY' <span class="kw">AND</span> relationship = 'HAS_EQUIPMENT';
+
+-- Every property of a node
+<span class="kw">SELECT</span> property_name, value_text, value_num, value_date
+<span class="kw">FROM</span> node_properties <span class="kw">WHERE</span> node_id = 'EQ:30166';
+
+-- One property of a node
+<span class="kw">SELECT</span> value_text <span class="kw">FROM</span> node_properties
+<span class="kw">WHERE</span> node_id = 'EQ:30166' <span class="kw">AND</span> property_name = 'manufacturer';</pre>
+
+    <p style="margin-top:22px">And the one recursive shape — every descendant of a Functional Location, arbitrary depth, in one query:</p>
+    <pre><span class="kw">WITH RECURSIVE</span> descendants <span class="kw">AS</span> (
+  <span class="kw">SELECT</span> target_id <span class="kw">AS</span> node_id, 1 <span class="kw">AS</span> depth
+  <span class="kw">FROM</span> edges <span class="kw">WHERE</span> source_id = 'FL:BOKOR' <span class="kw">AND</span> relationship = 'HAS_SUBFLOC'
+  <span class="kw">UNION ALL</span>
+  <span class="kw">SELECT</span> e.target_id, d.depth + 1
+  <span class="kw">FROM</span> edges e <span class="kw">JOIN</span> descendants d <span class="kw">ON</span> e.source_id = d.node_id
+  <span class="kw">WHERE</span> e.relationship = 'HAS_SUBFLOC'
+)
+<span class="kw">SELECT</span> * <span class="kw">FROM</span> descendants;</pre>
+
+    <p style="font-size:14px;color:var(--ink-soft);margin-top:18px">A ready-to-run version of these — edit one variable, uncomment one function, run — lives in <code>test_queries.py</code> alongside the loaders.</p>
+  </section>
+
+  <footer>
+    <span>sap_pm_kg &middot; PostgreSQL knowledge graph &middot; Azure Flexible Server (Entra ID auth)</span>
+    <span>Internal reference &mdash; SAP PM Data Revitalization, Bokor</span>
+  </footer>
+
+</div>

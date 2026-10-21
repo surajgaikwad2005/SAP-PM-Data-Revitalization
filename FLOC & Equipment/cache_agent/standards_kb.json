@@ -1,0 +1,3018 @@
+{
+  "records": [
+    {
+      "evidence_type": "standards_kb",
+      "key": "ISO14224-3.91-TAG-NUMBER",
+      "value": "functional_location_structure",
+      "source_name": "ISO 14224 2016.md",
+      "source_ref": "lines 1328-1425",
+      "evidence_text": "tag number: unique code that identifies the equipment function and its physical location. Normally includes the system for which it belongs. Also entitled 'functional location' in some CMMIS. The equipment is allocated to a tag for only so long as it occupies that function and location.",
+      "interpretation": "A Functional Location (tag number) must be a unique code that encodes both the equipment function and its physical location. Equipment is only linked to a functional location while it physically occupies that function/location; when equipment moves, the assignment must be updated.",
+      "related_fields": [
+        "Functional Location",
+        "Technical IdentNo."
+      ],
+      "keywords": [
+        "tag number",
+        "functional location",
+        "unique code",
+        "equipment function",
+        "physical location",
+        "CMMIS"
+      ],
+      "confidence_base": 0.9
+    },
+    {
+      "evidence_type": "standards_kb",
+      "key": "ISO14224-TAX-001",
+      "value": "functional_location_hierarchy",
+      "source_name": "ISO 14224 2016.md",
+      "source_ref": "lines 1948-1989",
+      "evidence_text": "Levels 1 to 5 represent a high-level categorization that relates to industries and plant application regardless of the equipment units involved. Taxonomic information on these levels (1 to 5) shall be included in the database for each equipment unit as 'use/location data'.",
+      "interpretation": "Functional location hierarchy should reflect ISO 14224 taxonomic levels 1-5 (Industry, Business category, Installation category, Plant/Unit category, Section/System) as use/location context for each equipment unit.",
+      "related_fields": [
+        "Superior FunctLoc.",
+        "Functional Location"
+      ],
+      "keywords": [
+        "taxonomy",
+        "hierarchy",
+        "functional location",
+        "use/location data",
+        "levels 1-5",
+        "industry",
+        "installation",
+        "plant",
+        "section",
+        "system"
+      ],
+      "confidence_base": 0.9
+    },
+    {
+      "evidence_type": "standards_kb",
+      "key": "ISO14224-TAX-002",
+      "value": "functional_location_structure",
+      "source_name": "ISO 14224 2016.md",
+      "source_ref": "lines 1948-1989",
+      "evidence_text": "Table 2 — Taxonomy examples: Level 3 = Installation category (Type of facility), Level 4 = Plant/Unit category (Type of plant/unit), Level 5 = Section/System (Main section/system of the plant).",
+      "interpretation": "Functional location structure should follow at minimum three levels: Installation (facility type), Plant/Unit, and Section/System before reaching equipment level.",
+      "related_fields": [
+        "Functional Location",
+        "Superior FunctLoc."
+      ],
+      "keywords": [
+        "installation category",
+        "plant unit",
+        "section system",
+        "functional location structure",
+        "taxonomy level"
+      ],
+      "confidence_base": 0.9
+    },
+    {
+      "evidence_type": "standards_kb",
+      "key": "ISO14224-TAX-003",
+      "value": "inventory_number_level",
+      "source_name": "ISO 14224 2016.md",
+      "source_ref": "lines 1948-1989",
+      "evidence_text": "Levels 6 to 9 are related to the equipment unit (inventory) with the subdivision in lower indenture levels corresponding to a parent-child relationship. Level 6 = Equipment class/unit, Level 7 = Subunit, Level 8 = Component/Maintainable item, Level 9 = Part.",
+      "interpretation": "Inventory/equipment records correspond to ISO 14224 level 6 (Equipment class/unit) and below. Parent-child relationships at levels 6-9 must be maintained in equipment master data.",
+      "related_fields": [
+        "Inventory Number",
+        "Functional Location"
+      ],
+      "keywords": [
+        "equipment unit",
+        "inventory",
+        "subunit",
+        "component",
+        "maintainable item",
+        "parent-child",
+        "indenture level",
+        "level 6"
+      ],
+      "confidence_base": 0.9
+    },
+    {
+      "evidence_type": "standards_kb",
+      "key": "ISO14224-TAX-004",
+      "value": "equipment_master_data",
+      "source_name": "ISO 14224 2016.md",
+      "source_ref": "lines 1948-1989",
+      "evidence_text": "Each equipment class contains comparable equipment units (e.g. compressors). Heat exchangers, compressors, piping, pumps, gas turbines, subsea wellhead and X-mas trees, lifeboats, extruders, subsea BOPs (see Table A.4).",
+      "interpretation": "Equipment master data must classify each equipment unit into a recognized equipment class (level 6) consistent with ISO 14224 taxonomy, enabling grouping of comparable units.",
+      "related_fields": [
+        "Functional Location",
+        "Superior FunctLoc."
+      ],
+      "keywords": [
+        "equipment class",
+        "compressor",
+        "pump",
+        "heat exchanger",
+        "gas turbine",
+        "equipment unit",
+        "classification"
+      ],
+      "confidence_base": 0.9
+    },
+    {
+      "evidence_type": "standards_kb",
+      "key": "ISO14224-2016-001",
+      "value": "equipment_master_data",
+      "source_name": "ISO 14224 2016.md",
+      "source_ref": "lines 2202-2242",
+      "evidence_text": "The minimum data shall encompass all data required to identify the equipment physical location at any given point in time, the main design attribute identifier used by both parties (e.g. manufacturer's part number), manufacturer and unique identifier of each specific equipment item (typically manufacturer's serial number).",
+      "interpretation": "Equipment master data must include: physical location, manufacturer's part number (Technical IdentNo. or catalog reference), manufacturer name, and a unique identifier (serial number). These are mandatory minimum fields for any equipment record.",
+      "related_fields": [
+        "Inventory Number",
+        "Technical IdentNo.",
+        "Functional Location"
+      ],
+      "keywords": [
+        "manufacturer",
+        "part number",
+        "serial number",
+        "physical location",
+        "minimum data",
+        "unique identifier"
+      ],
+      "confidence_base": 0.9
+    },
+    {
+      "evidence_type": "standards_kb",
+      "key": "ISO14224-2016-002",
+      "value": "functional_location_hierarchy",
+      "source_name": "ISO 14224 2016.md",
+      "source_ref": "lines 2202-2242",
+      "evidence_text": "Table 5 — Equipment data common to all equipment classes: Use/Location attributes — Industry (level 1), Business category (level 2), Installation category (level 3), Installation code or name (level 3), Owner code or name (level 4), Geographic location (level 3).",
+      "interpretation": "ISO 14224 defines a taxonomic hierarchy for location attributes: Industry at level 1, Business category at level 2, Installation category/code and geographic location at level 3, and Owner at level 4. Functional location structures should reflect this hierarchy when mapping SAP FL levels to ISO taxonomy levels.",
+      "related_fields": [
+        "Functional Location",
+        "Superior FunctLoc."
+      ],
+      "keywords": [
+        "taxonomic level",
+        "installation",
+        "business category",
+        "industry",
+        "geographic location",
+        "hierarchy",
+        "location attributes"
+      ],
+      "confidence_base": 0.9
+    },
+    {
+      "evidence_type": "standards_kb",
+      "key": "ISO14224-001",
+      "value": "functional_location_hierarchy",
+      "source_name": "ISO 14224 2016.md",
+      "source_ref": "lines 2243-2299 (Page 45-46)",
+      "evidence_text": "Taxonomic level 4: Plant/Unit category and code; Level 5: Section/System; Level 6: Equipment class, Equipment Type, Equipment identification/Location (tag number).",
+      "interpretation": "The ISO 14224 taxonomy defines a hierarchy from Plant/Unit (level 4) through Section/System (level 5) to Equipment (level 6). Functional Location structures should reflect these levels, with superior functional locations corresponding to higher taxonomic levels.",
+      "related_fields": [
+        "Superior FunctLoc.",
+        "Functional Location"
+      ],
+      "keywords": [
+        "taxonomic level",
+        "plant",
+        "unit",
+        "section",
+        "system",
+        "equipment",
+        "hierarchy",
+        "functional location"
+      ],
+      "confidence_base": 0.9
+    },
+    {
+      "evidence_type": "standards_kb",
+      "key": "ISO14224-002",
+      "value": "equipment_master_data",
+      "source_name": "ISO 14224 2016.md",
+      "source_ref": "lines 2243-2299 (Page 45-46)",
+      "evidence_text": "Equipment attributes at taxonomic level 6 include: Equipment identification/Location (e.g. tag number), Unique equipment identification number, Manufacturer's name, Manufacturer's model designation. The tag number identifies the equipment function and its physical location. If the equipment is replaced, the tag number (and part number) remains the same, but the serial number changes.",
+      "interpretation": "For equipment master data validation: Manufacturer's name and model designation are required fields at equipment level (level 6). The unique equipment identification number (serial number) is distinct from the tag number (functional location/Technical IdentNo.). Tag number stays constant across equipment replacements; serial number changes. Bokor Inventory Number should correspond to the unique equipment identification number (serial number).",
+      "related_fields": [
+        "Manufacturer",
+        "Model",
+        "Inventory Number",
+        "Technical IdentNo."
+      ],
+      "keywords": [
+        "manufacturer",
+        "model",
+        "tag number",
+        "serial number",
+        "unique equipment identification",
+        "part number",
+        "equipment identification",
+        "technical ident"
+      ],
+      "confidence_base": 0.9
+    },
+    {
+      "evidence_type": "standards_kb",
+      "key": "ISO14224-2016-5561-001",
+      "value": "equipment_master_data",
+      "source_name": "ISO 14224 2016.md",
+      "source_ref": "lines 5561-5609",
+      "evidence_text": "Table A.97 — Equipment-specific data — Subsea pumps: Manufacturer (Specify, Priority: High), Model type (Specify, Priority: Low)",
+      "interpretation": "For subsea pump equipment records, Manufacturer is a high-priority required field and Model type is a low-priority field. Both require free-text specification. These map to equipment master data fields Manufacturer and Model in SAP/PMMS.",
+      "related_fields": [
+        "Manufacturer",
+        "Model type",
+        "Technical IdentNo."
+      ],
+      "keywords": [
+        "subsea pump",
+        "manufacturer",
+        "model type",
+        "equipment data",
+        "priority"
+      ],
+      "confidence_base": 0.9
+    },
+    {
+      "evidence_type": "standards_kb",
+      "key": "ISO14224-2016-L5946-001",
+      "value": "equipment_master_data",
+      "source_name": "ISO 14224 2016.md",
+      "source_ref": "lines 5946-6006 / Page 151-152",
+      "evidence_text": "Table A.108 — Equipment-specific data — Downhole well completion: Manufacturer (Text, High priority); Model name — Give unique item model designation (Specify, High priority); Manufacturers part number — Provide identifier which uniquely identifies equipment with identical design attributes (Text/numeric, High priority); Serial number — Provide serial number which uniquely identifies equipment on a per equipment basis (Text, High/medium priority).",
+      "interpretation": "For downhole well completion equipment, Manufacturer, Model Name, Manufacturer Part Number, and Serial Number are all high-priority fields. These must be populated to uniquely identify equipment. Part number and serial number reflect in more detail the unique equipment identification number. This applies to SAP equipment master data fields for manufacturer, model, and part number.",
+      "related_fields": [
+        "Manufacturer",
+        "Model",
+        "Part Number",
+        "Serial Number"
+      ],
+      "keywords": [
+        "manufacturer",
+        "model name",
+        "part number",
+        "serial number",
+        "downhole well completion",
+        "equipment identification",
+        "high priority"
+      ],
+      "confidence_base": 0.9
+    },
+    {
+      "evidence_type": "standards_kb",
+      "key": "ISO14224-2016-L6007-001",
+      "value": "equipment_master_data",
+      "source_name": "ISO 14224 2016.md",
+      "source_ref": "lines 6007-6077",
+      "evidence_text": "Manufacturer part number and serial number reflect in more detail the unique equipment identification number mentioned in Table 5. Manufacturer and model name are also included in Table 5.",
+      "interpretation": "For equipment master data validation, manufacturer, model name, and part number (both operator and manufacturer) are required fields for unique equipment identification. High priority fields include Model, Part number (manuf.), and Manufacturer.",
+      "related_fields": [
+        "Manufacturer",
+        "Model",
+        "Part Number"
+      ],
+      "keywords": [
+        "manufacturer",
+        "model",
+        "part number",
+        "serial number",
+        "unique equipment identification"
+      ],
+      "confidence_base": 0.9
+    },
+    {
+      "evidence_type": "standards_kb",
+      "key": "ISO14224-BOP-001",
+      "value": "equipment_master_data",
+      "source_name": "ISO 14224 2016.md",
+      "source_ref": "lines 6657-6721",
+      "evidence_text": "BOP manufacturer/supplier — Specify — Free text — Priority: High; Ram preventers – manufacturer (and model) — Specify — Priority: High; Annular preventers – manufacturer (and model) — Specify — Priority: High",
+      "interpretation": "For Surface Blowout Preventer equipment records, manufacturer and model fields are High priority and must be populated for the BOP unit as well as for ram preventers and annular preventers sub-components.",
+      "related_fields": [
+        "manufacturer",
+        "model",
+        "technical_ident_no"
+      ],
+      "keywords": [
+        "BOP",
+        "blowout preventer",
+        "manufacturer",
+        "model",
+        "surface BOP",
+        "ram preventer",
+        "annular preventer"
+      ],
+      "confidence_base": 0.9
+    },
+    {
+      "evidence_type": "standards_kb",
+      "key": "ISO14224-BOP-002",
+      "value": "equipment_master_data",
+      "source_name": "ISO 14224 2016.md",
+      "source_ref": "lines 6657-6721",
+      "evidence_text": "Installation type — Specify — Semi-submersible, jack-up, TLP, onshore, other — Priority: Medium; Installed location/recorded water depth — Specify — Foot (metres) — Priority: Medium",
+      "interpretation": "Equipment master data for Surface BOP must record installation type (semi-submersible, jack-up, TLP, onshore, other) and installed location/water depth. These are medium-priority fields that support location validation.",
+      "related_fields": [
+        "location",
+        "technical_ident_no"
+      ],
+      "keywords": [
+        "BOP",
+        "installation type",
+        "installed location",
+        "water depth",
+        "semi-submersible",
+        "jack-up",
+        "TLP",
+        "onshore"
+      ],
+      "confidence_base": 0.9
+    },
+    {
+      "evidence_type": "standards_kb",
+      "key": "ISO14224-BOP-003",
+      "value": "technical_ident_no",
+      "source_name": "ISO 14224 2016.md",
+      "source_ref": "lines 6657-6721",
+      "evidence_text": "Equipment class — Level 6: Surface blowout preventers — Code: BT; Equipment types: Piloted hydraulic (PH), Multiplexed electro-hydraulic (MX)",
+      "interpretation": "Surface BOPs are classified at ISO 14224 taxonomy Level 6 with class code BT. Equipment type must be one of: PH (Piloted hydraulic) or MX (Multiplexed electro-hydraulic). These codes should be reflected in the Technical IdentNo. or catalog profile for BOP equipment records.",
+      "related_fields": [
+        "technical_ident_no",
+        "catalog_profile"
+      ],
+      "keywords": [
+        "BOP",
+        "BT",
+        "PH",
+        "MX",
+        "equipment class",
+        "level 6",
+        "type classification",
+        "blowout preventer"
+      ],
+      "confidence_base": 0.9
+    },
+    {
+      "evidence_type": "standards_kb",
+      "key": "ISO14224-2016-L6801-001",
+      "value": "equipment_master_data",
+      "source_name": "ISO 14224 2016.md",
+      "source_ref": "lines 6801-6887",
+      "evidence_text": "Manufacturer: Specify (Text, High priority). Unit identification: Manufacturer model/part/serial number (Number or name, High priority).",
+      "interpretation": "For surface well control equipment, Manufacturer must be specified as text (High priority), and the unit identification capturing manufacturer model, part, and serial number is also High priority — maps to Manufacturer and Technical IdentNo. fields in equipment master data.",
+      "related_fields": [
+        "Manufacturer",
+        "Technical IdentNo."
+      ],
+      "keywords": [
+        "manufacturer",
+        "unit identification",
+        "model",
+        "part number",
+        "serial number",
+        "surface well control",
+        "high priority"
+      ],
+      "confidence_base": 0.9
+    },
+    {
+      "evidence_type": "standards_kb",
+      "key": "IVA-001",
+      "value": "functional_location_structure",
+      "source_name": "IVA_PMMS Training Pack_2026.md",
+      "source_ref": "Page 11",
+      "evidence_text": "Plant Asset Structure hierarchy represent the levels and relationships of plant process units, sub-process units, functional location boundaries, packages and equipment that are installed in their respective Functional Location boundaries. Asset Structure following UDMS – Asset hierarchy requirement.",
+      "interpretation": "Functional Location structure must conform to the UDMS Asset hierarchy requirement, reflecting plant process units, sub-process units, FL boundaries, packages, and equipment in their correct hierarchical relationships.",
+      "related_fields": [
+        "Functional Location",
+        "Superior FunctLoc."
+      ],
+      "keywords": [
+        "plant asset structure",
+        "functional location",
+        "hierarchy",
+        "UDMS",
+        "asset hierarchy"
+      ],
+      "confidence_base": 0.9
+    },
+    {
+      "evidence_type": "standards_kb",
+      "key": "IVA-002",
+      "value": "functional_location_hierarchy",
+      "source_name": "IVA_PMMS Training Pack_2026.md",
+      "source_ref": "Page 11",
+      "evidence_text": "Equipment only to be installed at the lowest level of functional location.",
+      "interpretation": "Equipment must not be assigned to any functional location that is not the lowest level in the hierarchy. Any equipment linked to a mid-level or higher FL is invalid.",
+      "related_fields": [
+        "Functional Location",
+        "Superior FunctLoc."
+      ],
+      "keywords": [
+        "equipment",
+        "lowest level",
+        "functional location",
+        "install"
+      ],
+      "confidence_base": 0.9
+    },
+    {
+      "evidence_type": "standards_kb",
+      "key": "IVA-003",
+      "value": "functional_location_hierarchy",
+      "source_name": "IVA_PMMS Training Pack_2026.md",
+      "source_ref": "Page 12",
+      "evidence_text": "ISO Taxonomy — Upstream Plant Asset Structure: Level 1=Industry, Level 2A=Country/Region, Level 2B=Block/Cluster/PSC, Level 3=Field, Level 4=Platform, Level 5A=System, Level 5B=Sub-system, Level 5C=Skid/Grouped Tag/Piping Circuit, Level 6=Boundary, Level 7A=Sub-boundary, Level 7*=Sub Sub-boundary, Level 8=Tag (with Equipment allowed).",
+      "interpretation": "Functional Locations must follow the defined 8-level ISO 14224-adapted taxonomy. Equipment (Allow Equip.=✓) is only permitted at Level 8 (Tag). Tags (Allow Tag=✓) are permitted at Levels 5C, 6, 7A, 7*. BOM is not allowed at any FL level. Notifications and Work Orders are allowed from Level 5A downward.",
+      "related_fields": [
+        "Functional Location",
+        "Superior FunctLoc."
+      ],
+      "keywords": [
+        "ISO 14224",
+        "taxonomy",
+        "hierarchy level",
+        "functional location",
+        "equipment level",
+        "tag",
+        "boundary",
+        "system",
+        "sub-system",
+        "PCSB"
+      ],
+      "confidence_base": 0.9
+    },
+    {
+      "evidence_type": "standards_kb",
+      "key": "IVA-004",
+      "value": "catalog_profile",
+      "source_name": "IVA_PMMS Training Pack_2026.md",
+      "source_ref": "Page 10",
+      "evidence_text": "Catalogue Profile - a combination of standardized codes that are used for failure analysis. It consists of symptom, object part, damage and cause codes used during technical reporting.",
+      "interpretation": "A valid Catalog Profile must include standardized codes covering symptom, object part, damage, and cause. Any equipment master record must have an appropriate catalog profile assigned for technical reporting purposes.",
+      "related_fields": [
+        "Catalog Profile"
+      ],
+      "keywords": [
+        "catalog profile",
+        "failure analysis",
+        "symptom",
+        "object part",
+        "damage",
+        "cause",
+        "technical reporting"
+      ],
+      "confidence_base": 0.9
+    },
+    {
+      "evidence_type": "standards_kb",
+      "key": "IVA-005",
+      "value": "equipment_master_data",
+      "source_name": "IVA_PMMS Training Pack_2026.md",
+      "source_ref": "Page 10",
+      "evidence_text": "Equipment is an individual object that represents a maintainable item (e.g. Centrifugal Pump) that can be installed to a Functional Location. Functional location represents the location of a technical system at which maintenance can be performed. It can represent a plant area/module, a system (e.g. turbine system) or down to the tag number level.",
+      "interpretation": "Each equipment master record must be linked to a functional location. The FL represents the physical/technical location and can span from plant area level down to individual tag level.",
+      "related_fields": [
+        "Functional Location",
+        "Equipment"
+      ],
+      "keywords": [
+        "equipment",
+        "functional location",
+        "maintainable item",
+        "install",
+        "tag number",
+        "plant area"
+      ],
+      "confidence_base": 0.9
+    },
+    {
+      "evidence_type": "standards_kb",
+      "key": "R-001",
+      "value": "functional_location_hierarchy",
+      "source_name": "IVA_PMMS Training Pack_2026.md",
+      "source_ref": "lines 921-978 (Page 32)",
+      "evidence_text": "Functional Location assigned to detail asset level; the best is at the lowest level (equipment). Minimum is at Skid/System level (Level 5).",
+      "interpretation": "When creating a notification, the Functional Location must be assigned at a minimum to Level 5 (Skid/System). The preferred assignment is at the lowest possible level, i.e., individual equipment level.",
+      "related_fields": [
+        "Functional Location",
+        "Superior FunctLoc."
+      ],
+      "keywords": [
+        "functional location",
+        "asset level",
+        "lowest level",
+        "equipment",
+        "skid",
+        "system",
+        "level 5",
+        "hierarchy"
+      ],
+      "confidence_base": 0.9
+    },
+    {
+      "evidence_type": "standards_kb",
+      "key": "R-002",
+      "value": "functional_location_hierarchy",
+      "source_name": "IVA_PMMS Training Pack_2026.md",
+      "source_ref": "lines 921-978 (Page 33)",
+      "evidence_text": "High-level Asset Hierarchy - relates to industry & plant application. Taxonomy information on these levels shall be included in the organization database to identify the geographical location. Detailed-level Asset Hierarchy - relates to the equipment unit with the subdivision in lower indenture levels corresponding to a parent-child relationship.",
+      "interpretation": "The asset hierarchy is split into high-level (plant/geographical identification) and detailed-level (equipment unit with parent-child subdivisions). Functional Location structure must reflect this two-tier hierarchy concept, with superior functional locations representing the high-level and child locations representing the detailed equipment level.",
+      "related_fields": [
+        "Functional Location",
+        "Superior FunctLoc."
+      ],
+      "keywords": [
+        "asset hierarchy",
+        "high-level",
+        "detailed-level",
+        "parent-child",
+        "geographical location",
+        "taxonomy",
+        "indenture levels",
+        "functional location"
+      ],
+      "confidence_base": 0.9
+    },
+    {
+      "evidence_type": "standards_kb",
+      "key": "PMMS-L3-2026-001",
+      "value": "functional_location_structure",
+      "source_name": "PMMS_Manual_L3_2026.md",
+      "source_ref": "lines 968-1024 / Page 26-27",
+      "evidence_text": "A multi-level, hierarchical structure that contains the maintainable assets of a company according to location and function or process-related criteria. Key Functional location data attributes include location, structuring, and general data.",
+      "interpretation": "Functional Location must be structured as a multi-level hierarchy based on location, function, or process criteria. Key attributes to validate include location, structuring, and general data fields.",
+      "related_fields": [
+        "Functional Location",
+        "Superior FunctLoc."
+      ],
+      "keywords": [
+        "functional location",
+        "multi-level",
+        "hierarchical",
+        "location",
+        "structuring",
+        "general data"
+      ],
+      "confidence_base": 0.9
+    },
+    {
+      "evidence_type": "standards_kb",
+      "key": "PMMS-L3-2026-002",
+      "value": "functional_location_hierarchy",
+      "source_name": "PMMS_Manual_L3_2026.md",
+      "source_ref": "lines 968-1024 / Page 27",
+      "evidence_text": "Asset Level 1 to 4 represents high-level tagging of asset hierarchy that shall be avoided. Asset Level 5 to 8 represents detailed-level that relates to the equipment unit with the subdivision in lower indenture levels, where asset maintenance shall be captured for correct Reliability and Maintenance data.",
+      "interpretation": "Maintenance work orders and asset maintenance records must not be assigned to Functional Locations at Asset Level 1-4 (high-level). Valid assignment for maintenance capture is Asset Level 5-8 only. Validate that maintenance is not captured at levels 1-4.",
+      "related_fields": [
+        "Functional Location",
+        "Superior FunctLoc."
+      ],
+      "keywords": [
+        "asset level",
+        "hierarchy",
+        "level 1",
+        "level 4",
+        "level 5",
+        "level 8",
+        "functional location",
+        "maintenance",
+        "reliability"
+      ],
+      "confidence_base": 0.9
+    },
+    {
+      "evidence_type": "standards_kb",
+      "key": "PMMS-L3-2026-003",
+      "value": "equipment_master_data",
+      "source_name": "PMMS_Manual_L3_2026.md",
+      "source_ref": "lines 968-1024 / Page 26",
+      "evidence_text": "Asset Structure in PMMS is the representation of all levels and relationship of plant process units, sub-units, functional location boundaries and equipment, together with their tag numbers installed in respective functional location boundary. It is adapted from ISO 14224 for PETRONAS PCSB requirements.",
+      "interpretation": "Equipment master data and Functional Location structure must align with ISO 14224 as adapted for PETRONAS PCSB. Tag numbers must be installed within their correct functional location boundary. Validate that equipment tag numbers correspond to appropriate functional location assignments.",
+      "related_fields": [
+        "Functional Location",
+        "Inventory Number"
+      ],
+      "keywords": [
+        "ISO 14224",
+        "asset structure",
+        "tag number",
+        "functional location",
+        "equipment",
+        "PETRONAS",
+        "PCSB"
+      ],
+      "confidence_base": 0.9
+    },
+    {
+      "evidence_type": "standards_kb",
+      "key": "PTG120504-001",
+      "value": "catalog_profile",
+      "source_name": "PTG 12.05.04 - PMMS.md",
+      "source_ref": "lines 221-285",
+      "evidence_text": "Catalogue Profile: A set of standardized codes in PMMS that are used for failure analysis. Consists of Symptom Codes, Object Part Codes, Damage Codes and Cause Codes used during technical reporting. Refer PTG 00.01.03 PMMS Catalog Profile: Information and User Guide. 1) Symptom Code – Failure Mode 2) Object Part – Maintainable Item, or Part 3) Damage Codes – Effect is seen on Object Part or Failure Mechanism. 4) Cause Codes – Process that caused the Damage Code, or Failure Mechanism-2.",
+      "interpretation": "The Catalog Profile field must reference a valid standardized code set comprising Symptom Codes, Object Part Codes, Damage Codes, and Cause Codes as defined in PTG 00.01.03. All four code types must be applicable for failure analysis and technical reporting.",
+      "related_fields": [
+        "Catalog Profile"
+      ],
+      "keywords": [
+        "catalog profile",
+        "catalogue profile",
+        "symptom code",
+        "object part code",
+        "damage code",
+        "cause code",
+        "failure analysis",
+        "PTG 00.01.03"
+      ],
+      "confidence_base": 0.9
+    },
+    {
+      "evidence_type": "standards_kb",
+      "key": "PTG120504-002",
+      "value": "equipment_master_data",
+      "source_name": "PTG 12.05.04 - PMMS.md",
+      "source_ref": "lines 221-285",
+      "evidence_text": "Asset Register: A list of all the Assets in a particular plant/workplace, together with information about those assets, such as manufacturer, vendor, make, model, specifications, etc.",
+      "interpretation": "Equipment master data must include manufacturer, vendor, make, model, and specifications as part of the asset register. These fields are mandatory components of a complete asset record in PMMS.",
+      "related_fields": [
+        "Manufacturer",
+        "Model",
+        "Inventory Number"
+      ],
+      "keywords": [
+        "asset register",
+        "manufacturer",
+        "vendor",
+        "make",
+        "model",
+        "specifications",
+        "equipment master data"
+      ],
+      "confidence_base": 0.9
+    },
+    {
+      "evidence_type": "standards_kb",
+      "key": "PTG120504-001",
+      "value": "equipment_master_data",
+      "source_name": "PTG 12.05.04 - PMMS.md",
+      "source_ref": "lines 684-754",
+      "evidence_text": "All plant assets including tools that require some form of maintenance, periodic calibration, inspection or engineering support during its life cycle shall be entered into the Asset Register in PMMS and the equipment characteristics shall be duly completed.",
+      "interpretation": "Every maintainable asset or tool must exist in PMMS with fully completed equipment characteristics/master data fields.",
+      "related_fields": [
+        "Functional Location",
+        "Equipment"
+      ],
+      "keywords": [
+        "asset register",
+        "equipment characteristics",
+        "maintenance",
+        "calibration",
+        "inspection"
+      ],
+      "confidence_base": 0.9
+    },
+    {
+      "evidence_type": "standards_kb",
+      "key": "PTG120504-002",
+      "value": "functional_location_structure",
+      "source_name": "PTG 12.05.04 - PMMS.md",
+      "source_ref": "lines 684-754",
+      "evidence_text": "OPU shall have an Asset Structure in PMMS to represent the hierarchical breakdown structure of its entire plant. The structure is adapted from ISO 14224 and further enhanced to cater for PETRONAS requirements.",
+      "interpretation": "The functional location structure must follow the PETRONAS adaptation of ISO 14224 taxonomy for all OPUs.",
+      "related_fields": [
+        "Functional Location",
+        "Superior FunctLoc."
+      ],
+      "keywords": [
+        "ISO 14224",
+        "asset structure",
+        "hierarchical",
+        "PETRONAS taxonomy",
+        "OPU"
+      ],
+      "confidence_base": 0.9
+    },
+    {
+      "evidence_type": "standards_kb",
+      "key": "PTG120504-003",
+      "value": "functional_location_hierarchy",
+      "source_name": "PTG 12.05.04 - PMMS.md",
+      "source_ref": "lines 684-754",
+      "evidence_text": "Plant Asset Level 1 to 4 represents high-level tagging of asset hierarchy that relates to industry and plant application. Plant Asset Level 5 to 8 shall be structured as above to represent detailed-level tagging of asset hierarchy that relates to the equipment unit. The subdivision in lower indenture levels shall correspond to a parent-child relationship.",
+      "interpretation": "Functional location hierarchy levels 1-4 are high-level (industry/plant), levels 5-8 are detailed (equipment unit), and each child level must have a valid parent (Superior FunctLoc.) in the hierarchy.",
+      "related_fields": [
+        "Functional Location",
+        "Superior FunctLoc."
+      ],
+      "keywords": [
+        "hierarchy",
+        "level 1-4",
+        "level 5-8",
+        "parent-child",
+        "Superior FunctLoc",
+        "indenture"
+      ],
+      "confidence_base": 0.9
+    },
+    {
+      "evidence_type": "standards_kb",
+      "key": "PTG120504-004",
+      "value": "functional_location_hierarchy",
+      "source_name": "PTG 12.05.04 - PMMS.md",
+      "source_ref": "lines 684-754",
+      "evidence_text": "As much as possible, the hierarchy levels as above shall be adhered to. However, there are cases where a specific level may not be relevant to a specific asset. In this case, the level may be skipped e.g. Level 3B for Petrochemical installations, Level 4C for other than Upstream installations, etc.",
+      "interpretation": "Skipping a hierarchy level is permitted only when that level is not applicable to the asset type or installation category; validators should allow for documented level skips rather than flagging all gaps as errors.",
+      "related_fields": [
+        "Functional Location",
+        "Superior FunctLoc."
+      ],
+      "keywords": [
+        "level skip",
+        "hierarchy",
+        "not applicable",
+        "upstream",
+        "petrochemical"
+      ],
+      "confidence_base": 0.9
+    },
+    {
+      "evidence_type": "standards_kb",
+      "key": "PTG120504-001",
+      "value": "functional_location_hierarchy",
+      "source_name": "PTG 12.05.04 - PMMS.md",
+      "source_ref": "lines 755-825 / Page 24-25",
+      "evidence_text": "Level 6 - Functional Boundary is a grouping of main and supporting equipment which provide one main function for delivering intended output from a maintenance perspective.",
+      "interpretation": "Level 6 in the FL hierarchy represents the Functional Boundary grouping. Validation should confirm that Level 6 FLs are categorised as Functional Boundary nodes.",
+      "related_fields": [
+        "Functional Location",
+        "Superior FunctLoc."
+      ],
+      "keywords": [
+        "Level 6",
+        "Functional Boundary",
+        "hierarchy",
+        "compressor"
+      ],
+      "confidence_base": 0.9
+    },
+    {
+      "evidence_type": "standards_kb",
+      "key": "PTG120504-002",
+      "value": "functional_location_hierarchy",
+      "source_name": "PTG 12.05.04 - PMMS.md",
+      "source_ref": "lines 755-825 / Page 25",
+      "evidence_text": "Table 3.1: Compressor sub-division, representing Level 6 to Level 8 Functional Locations. Level 7 = sub-systems (Compression Unit, Transmission, Shaft Seal System, Lubrication System, Condition Monitoring); Level 8 = individual equipment items (e.g. Compressor, Gearbox, Temperature elements, etc.).",
+      "interpretation": "Compressor FL hierarchies must follow Level 6 (Boundary) → Level 7 (Sub-system) → Level 8 (Equipment Tag). Any compressor FL deviating from this three-level breakdown (L6–L8) should be flagged.",
+      "related_fields": [
+        "Functional Location",
+        "Superior FunctLoc."
+      ],
+      "keywords": [
+        "Level 6",
+        "Level 7",
+        "Level 8",
+        "compressor",
+        "hierarchy",
+        "sub-system"
+      ],
+      "confidence_base": 0.9
+    },
+    {
+      "evidence_type": "standards_kb",
+      "key": "PTG120504-003",
+      "value": "functional_location_hierarchy",
+      "source_name": "PTG 12.05.04 - PMMS.md",
+      "source_ref": "lines 755-825 / Page 25",
+      "evidence_text": "3.2.7 Equipment shall only be tagged to Level 8 Functional Location i.e. FL Tag, and only a single installation is allowed (instead of multiple) for a single FL Tag.",
+      "interpretation": "Equipment master records must be installed at Level 8 FLs only. No FL Tag at Level 8 should have more than one piece of equipment installed simultaneously.",
+      "related_fields": [
+        "Functional Location"
+      ],
+      "keywords": [
+        "Level 8",
+        "FL Tag",
+        "single installation",
+        "equipment tagging"
+      ],
+      "confidence_base": 0.9
+    },
+    {
+      "evidence_type": "standards_kb",
+      "key": "PTG120504-004",
+      "value": "equipment_master_data",
+      "source_name": "PTG 12.05.04 - PMMS.md",
+      "source_ref": "lines 755-825 / Page 25",
+      "evidence_text": "3.2.8 A unique equipment number, which represents the physical equipment, shall be created as a record in the database. This equipment number shall be assigned to each FL that represents its corresponding tag number.",
+      "interpretation": "Each physical equipment item must have a unique equipment master number and it must be linked (assigned) to the corresponding FL tag. Equipment without a FL assignment or with duplicate assignment should be flagged.",
+      "related_fields": [
+        "Functional Location",
+        "Inventory Number"
+      ],
+      "keywords": [
+        "unique equipment number",
+        "equipment master",
+        "FL assignment",
+        "tag number"
+      ],
+      "confidence_base": 0.9
+    },
+    {
+      "evidence_type": "standards_kb",
+      "key": "PTG120504-005",
+      "value": "functional_location_structure",
+      "source_name": "PTG 12.05.04 - PMMS.md",
+      "source_ref": "lines 755-825 / Page 25",
+      "evidence_text": "3.2.10 At all times, Functional Location and Plant Asset Structure shall reflect the latest physical asset location and tagging at the site.",
+      "interpretation": "FL master data must match actual physical site conditions. Stale or mismatched FL data (e.g., wrong location, decommissioned assets still active) is a validation failure.",
+      "related_fields": [
+        "Functional Location",
+        "Superior FunctLoc."
+      ],
+      "keywords": [
+        "physical asset",
+        "site accuracy",
+        "Functional Location",
+        "Plant Asset Structure",
+        "update"
+      ],
+      "confidence_base": 0.9
+    },
+    {
+      "evidence_type": "standards_kb",
+      "key": "PTG120504-006",
+      "value": "functional_location_structure",
+      "source_name": "PTG 12.05.04 - PMMS.md",
+      "source_ref": "lines 755-825 / Page 26",
+      "evidence_text": "3.3.1 Functional Location Master shall be used to capture information related to location, process or group of functions. In general, Functional Locations shall represent the whole asset structure from the top down to the tag number, e.g. Plant, Process Area, Process Unit, Sub-Process Unit, Boundary, Sub-Boundary or Equipment Tag.",
+      "interpretation": "FL master data must span the full hierarchy from Plant level down to Equipment Tag level. Each FL node must be correctly categorised as one of: Plant, Process Area, Process Unit, Sub-Process Unit, Boundary, Sub-Boundary, or Equipment Tag.",
+      "related_fields": [
+        "Functional Location",
+        "Superior FunctLoc."
+      ],
+      "keywords": [
+        "Functional Location Master",
+        "plant",
+        "process area",
+        "process unit",
+        "boundary",
+        "equipment tag",
+        "hierarchy",
+        "top-down"
+      ],
+      "confidence_base": 0.9
+    },
+    {
+      "evidence_type": "standards_kb",
+      "key": "PTG120504-001",
+      "value": "functional_location_structure",
+      "source_name": "PTG 12.05.04 - PMMS.md",
+      "source_ref": "lines 826-919",
+      "evidence_text": "All FL registration shall include: Company Code, Structure Indicator, Maintenance Plant, Planner Group, Main Work Centre, Functional Location, Functional Location Description, Superior Functional Location, Planning Plant, Hierarchy Level (Inventory Number), Location, Plant Section, and InstallSpecs.",
+      "interpretation": "These fields are mandatory minimum data for any Functional Location registration in PMMS/SAP. Validation should confirm all listed fields are populated for every FL record.",
+      "related_fields": [
+        "Company Code",
+        "Structure Indicator",
+        "Maintenance Plant",
+        "Planner Group",
+        "Main Work Centre",
+        "Functional Location",
+        "Functional Location Description",
+        "Superior Functional Location",
+        "Planning Plant",
+        "Location",
+        "Plant Section"
+      ],
+      "keywords": [
+        "Functional Location",
+        "Superior Functional Location",
+        "Maintenance Plant",
+        "Planner Group",
+        "Main Work Centre",
+        "Planning Plant",
+        "Location",
+        "Structure Indicator"
+      ],
+      "confidence_base": 0.9
+    },
+    {
+      "evidence_type": "standards_kb",
+      "key": "PTG120504-002",
+      "value": "inventory_number_level",
+      "source_name": "PTG 12.05.04 - PMMS.md",
+      "source_ref": "lines 826-919",
+      "evidence_text": "Hierarchy Level (Inventory Number) is a required field for all FL registration.",
+      "interpretation": "The Inventory Number field must be populated for every Functional Location and reflects the hierarchy level of the FL in the structure.",
+      "related_fields": [
+        "Hierarchy Level (Inventory Number)"
+      ],
+      "keywords": [
+        "Inventory Number",
+        "Hierarchy Level",
+        "Functional Location"
+      ],
+      "confidence_base": 0.9
+    },
+    {
+      "evidence_type": "standards_kb",
+      "key": "PTG120504-003",
+      "value": "functional_location_hierarchy",
+      "source_name": "PTG 12.05.04 - PMMS.md",
+      "source_ref": "lines 826-919",
+      "evidence_text": "Specific to Level 8 FL: Catalogue Profile and Equipment Criticality (ABC Indicator) are required. Equipment Installation allowed and Single Installation allowed shall be activated. For other than Level 8 FL, Equipment Installation allowed and Single Installation allowed shall be deactivated.",
+      "interpretation": "Catalog Profile and ABC Indicator are only mandatory at Level 8 FL. InstallSpecs (Equipment Installation allowed, Single Installation allowed) must be activated only at Level 8 and deactivated at all other levels.",
+      "related_fields": [
+        "Catalog Profile",
+        "ABC Indicator",
+        "Equipment Installation allowed",
+        "Single Installation allowed"
+      ],
+      "keywords": [
+        "Level 8",
+        "Catalog Profile",
+        "ABC Indicator",
+        "Equipment Installation",
+        "Single Installation",
+        "Hierarchy Level"
+      ],
+      "confidence_base": 0.9
+    },
+    {
+      "evidence_type": "standards_kb",
+      "key": "PTG120504-004",
+      "value": "abc_indicator",
+      "source_name": "PTG 12.05.04 - PMMS.md",
+      "source_ref": "lines 826-919",
+      "evidence_text": "Equipment Criticality (ABC Indicator) set at Level 8 FL shall be extended to the equipment master under the Functional Location.",
+      "interpretation": "The ABC Indicator (criticality) on a Level 8 FL must be propagated/matched to all equipment masters installed under that FL. Validation should check consistency between FL ABC Indicator and equipment master ABC Indicator.",
+      "related_fields": [
+        "ABC Indicator",
+        "Equipment Criticality",
+        "Functional Location"
+      ],
+      "keywords": [
+        "ABC Indicator",
+        "Equipment Criticality",
+        "Level 8",
+        "equipment master",
+        "Functional Location"
+      ],
+      "confidence_base": 0.9
+    },
+    {
+      "evidence_type": "standards_kb",
+      "key": "PTG120504-005",
+      "value": "equipment_master_data",
+      "source_name": "PTG 12.05.04 - PMMS.md",
+      "source_ref": "lines 826-919",
+      "evidence_text": "Equipment master shall consist of minimum information: Company Code, Maintenance Plant, Equipment Number, Equipment Description, Functional Location, Manufacturer, Model No., Planner Group, Planning Plant, Main Work Centre, Catalog Profile, Equipment Class, Technical ID Number, User Status (e.g. DOSH, EX, AELB, etc.).",
+      "interpretation": "All listed fields are mandatory minimum for an equipment master record. Validation should flag any equipment master missing one or more of these fields.",
+      "related_fields": [
+        "Company Code",
+        "Maintenance Plant",
+        "Equipment Number",
+        "Equipment Description",
+        "Functional Location",
+        "Manufacturer",
+        "Model No.",
+        "Planner Group",
+        "Planning Plant",
+        "Main Work Centre",
+        "Catalog Profile",
+        "Equipment Class",
+        "Technical ID Number",
+        "User Status"
+      ],
+      "keywords": [
+        "Equipment Master",
+        "Manufacturer",
+        "Model No.",
+        "Planner Group",
+        "Main Work Centre",
+        "Catalog Profile",
+        "Technical ID Number",
+        "Functional Location",
+        "User Status"
+      ],
+      "confidence_base": 0.9
+    },
+    {
+      "evidence_type": "standards_kb",
+      "key": "PTG120504-006",
+      "value": "technical_ident_no",
+      "source_name": "PTG 12.05.04 - PMMS.md",
+      "source_ref": "lines 826-919",
+      "evidence_text": "Technical ID Number is a mandatory field in the equipment master.",
+      "interpretation": "Every equipment master record must have a Technical ID Number populated. Absence of this field is a data quality violation.",
+      "related_fields": [
+        "Technical ID Number"
+      ],
+      "keywords": [
+        "Technical ID Number",
+        "Technical IdentNo",
+        "equipment master"
+      ],
+      "confidence_base": 0.9
+    },
+    {
+      "evidence_type": "standards_kb",
+      "key": "PTG120504-007",
+      "value": "catalog_profile",
+      "source_name": "PTG 12.05.04 - PMMS.md",
+      "source_ref": "lines 826-919",
+      "evidence_text": "Catalogue Profile is required at Level 8 FL (section b) and also as a mandatory field in the Equipment Master (section 3.3.2).",
+      "interpretation": "Catalog Profile must be present both on the Level 8 Functional Location and on every equipment master record. Validation should verify the field is populated in both contexts.",
+      "related_fields": [
+        "Catalog Profile",
+        "Functional Location",
+        "Equipment Master"
+      ],
+      "keywords": [
+        "Catalog Profile",
+        "Level 8",
+        "equipment master",
+        "Functional Location"
+      ],
+      "confidence_base": 0.9
+    },
+    {
+      "evidence_type": "standards_kb",
+      "key": "PTG120504-001",
+      "value": "catalog_profile",
+      "source_name": "PTG 12.05.04 - PMMS.md",
+      "source_ref": "lines 920-1011 (Page 29)",
+      "evidence_text": "Equipment class shall be the main reference when assigning catalogue profiles to its equipment. Refer to Appendix 7 for the list of catalogue profiles.",
+      "interpretation": "The Catalog Profile assigned to an equipment record must correspond to its Equipment Class. Validation should cross-check that the catalog profile matches the equipment class per the approved mapping in Appendix 7.",
+      "related_fields": [
+        "Catalog Profile",
+        "Equipment Class"
+      ],
+      "keywords": [
+        "catalog profile",
+        "equipment class",
+        "catalogue profile",
+        "assignment"
+      ],
+      "confidence_base": 0.9
+    },
+    {
+      "evidence_type": "standards_kb",
+      "key": "PTG120504-002",
+      "value": "equipment_master_data",
+      "source_name": "PTG 12.05.04 - PMMS.md",
+      "source_ref": "lines 920-1011 (Page 28-29)",
+      "evidence_text": "Characteristics value should be entered for all equipment, but priority should be given to critical equipment i.e. Critical Level 1 and Level 2. Equipment Characteristic data should be registered along with equipment master registration.",
+      "interpretation": "Equipment master records must include characteristic values. Critical Level 1 and Level 2 equipment must have characteristics populated. Validation should flag missing characteristic data, especially for critical equipment.",
+      "related_fields": [
+        "Equipment Class",
+        "Characteristics"
+      ],
+      "keywords": [
+        "characteristics",
+        "critical equipment",
+        "level 1",
+        "level 2",
+        "equipment master",
+        "registration"
+      ],
+      "confidence_base": 0.9
+    },
+    {
+      "evidence_type": "standards_kb",
+      "key": "PTG120504-003",
+      "value": "equipment_master_data",
+      "source_name": "PTG 12.05.04 - PMMS.md",
+      "source_ref": "lines 920-1011 (Page 30)",
+      "evidence_text": "This requirement shall be recorded in equipment master data by setting the equipment user status BOM (i.e. BOM required) or NBOM (BOM is not required).",
+      "interpretation": "Every equipment master record must have user status set to either BOM or NBOM. Validation should ensure this field is not left blank.",
+      "related_fields": [
+        "Equipment User Status",
+        "BOM"
+      ],
+      "keywords": [
+        "user status",
+        "BOM",
+        "NBOM",
+        "equipment master data"
+      ],
+      "confidence_base": 0.9
+    },
+    {
+      "evidence_type": "standards_kb",
+      "key": "PTG120504-001",
+      "value": "functional_location_hierarchy",
+      "source_name": "PTG 12.05.04 - PMMS.md",
+      "source_ref": "lines 1335-1378",
+      "evidence_text": "The correct equipment or Functional Location shall be assigned to the notification. The assigned FL shall be at Level 8 FL, with an exception is allowed for bulk equipment register at higher FL.",
+      "interpretation": "Notifications must reference a Level 8 Functional Location. Bulk equipment may be registered at a higher FL level as an exception. This implies FL hierarchy goes to at least Level 8 and equipment should normally be assigned at the lowest (Level 8) node.",
+      "related_fields": [
+        "Functional Location",
+        "Superior FunctLoc."
+      ],
+      "keywords": [
+        "Functional Location",
+        "FL",
+        "Level 8",
+        "bulk equipment",
+        "hierarchy",
+        "notification"
+      ],
+      "confidence_base": 0.9
+    },
+    {
+      "evidence_type": "standards_kb",
+      "key": "PTG120504-001",
+      "value": "functional_location_hierarchy",
+      "source_name": "PTG 12.05.04 - PMMS.md",
+      "source_ref": "lines 1519-1558",
+      "evidence_text": "Verify the equipment number and functional location and ensure the maintenance order is created against the lowest possible Functional Location (FL Level 8).",
+      "interpretation": "Maintenance orders must be assigned to the lowest possible functional location level (FL Level 8). Any FL assigned at a higher level should be corrected.",
+      "related_fields": [
+        "Functional Location",
+        "Superior FunctLoc."
+      ],
+      "keywords": [
+        "functional location",
+        "FL Level 8",
+        "lowest level",
+        "maintenance order",
+        "equipment number"
+      ],
+      "confidence_base": 0.9
+    },
+    {
+      "evidence_type": "standards_kb",
+      "key": "PTG120504-002",
+      "value": "equipment_master_data",
+      "source_name": "PTG 12.05.04 - PMMS.md",
+      "source_ref": "lines 1519-1558",
+      "evidence_text": "Enter Maintenance Planner Group – Specify the planner group that will be responsible for the maintenance order. Enter Work Centre – Specify the correct work centre that will execute the maintenance work.",
+      "interpretation": "Both planner group and work center fields must be populated correctly on maintenance orders, reflecting the responsible planning group and executing work center.",
+      "related_fields": [
+        "planner group",
+        "work center"
+      ],
+      "keywords": [
+        "planner group",
+        "work centre",
+        "maintenance order",
+        "responsible"
+      ],
+      "confidence_base": 0.9
+    },
+    {
+      "evidence_type": "standards_kb",
+      "key": "PTG120504-SCE-001",
+      "value": "functional_location_hierarchy",
+      "source_name": "PTG 12.05.04 - PMMS.md",
+      "source_ref": "lines 1887-1955 (Page 58)",
+      "evidence_text": "All equipment identified as an SCE shall be registered in PMMS and classified as an SCE at Level 8 Functional Location.",
+      "interpretation": "SCE (Safety Critical Element) equipment must be assigned to a Functional Location at hierarchy Level 8. This constrains the FL level for SCE classification during master data validation.",
+      "related_fields": [
+        "Functional Location",
+        "Superior FunctLoc."
+      ],
+      "keywords": [
+        "SCE",
+        "Safety Critical Element",
+        "Level 8",
+        "Functional Location",
+        "classification"
+      ],
+      "confidence_base": 0.9
+    },
+    {
+      "evidence_type": "standards_kb",
+      "key": "PTG120504-SCE-002",
+      "value": "functional_location_structure",
+      "source_name": "PTG 12.05.04 - PMMS.md",
+      "source_ref": "lines 1887-1955 (Page 58)",
+      "evidence_text": "SCE Class for functional location is used to store additional data required to: i. Identify the functional location is SCE ii. Assign the SCE functional location to its SCE Barrier and SCE Group iii. Record the reason for SCE being awarded",
+      "interpretation": "Functional Locations designated as SCE must have the SCE Class populated with SCE Barrier, SCE Group, and reason for SCE designation. Validation should check these class fields are filled for FL records marked as SCE.",
+      "related_fields": [
+        "Functional Location"
+      ],
+      "keywords": [
+        "SCE Class",
+        "Functional Location",
+        "SCE Barrier",
+        "SCE Group",
+        "class data"
+      ],
+      "confidence_base": 0.9
+    },
+    {
+      "evidence_type": "standards_kb",
+      "key": "PTG120504-8.2.2-MDI",
+      "value": "equipment_master_data",
+      "source_name": "PTG 12.05.04 - PMMS.md",
+      "source_ref": "lines 2184-2254 (Page 66-67)",
+      "evidence_text": "In PMMS, a procedure document template to ensure master data integrity was developed i.e. SAP Master Data: Change Request Control/Management. The document covers the procedure to request for creation or change to the following master data: i. Equipment Master ii. Functional Location iii. Bill of Materials iv. Maintenance Plan v. Task List vi. Maintenance Planner Group vii. Work Centre viii. Personnel Data (for timesheet purpose)",
+      "interpretation": "Any creation or change to Equipment Master, Functional Location, Maintenance Planner Group, or Work Centre must follow the formal SAP Master Data Change Request Control/Management procedure. Validation of these fields should confirm they were created/changed through approved channels.",
+      "related_fields": [
+        "Equipment Master",
+        "Functional Location",
+        "Maintenance Planner Group",
+        "Work Center"
+      ],
+      "keywords": [
+        "Equipment Master",
+        "Functional Location",
+        "Maintenance Planner Group",
+        "Work Centre",
+        "master data",
+        "change request",
+        "data integrity",
+        "SAP"
+      ],
+      "confidence_base": 0.9
+    },
+    {
+      "evidence_type": "standards_kb",
+      "key": "PTG120504-8.2.1-DQ",
+      "value": "equipment_master_data",
+      "source_name": "PTG 12.05.04 - PMMS.md",
+      "source_ref": "lines 2184-2254 (Page 66)",
+      "evidence_text": "Maintenance Master Data Quality: These master data records, such as functional locations, equipment, BOM, etc. should be complete and correct. The quality assurance shall be applied at the point of data creations or entry and periodically by carrying out a quality assessment exercise.",
+      "interpretation": "Functional location and equipment master data records must be complete and correct at the point of entry. Validation rules should enforce completeness and correctness of all required fields in both Functional Location and Equipment Master records.",
+      "related_fields": [
+        "Equipment Master",
+        "Functional Location"
+      ],
+      "keywords": [
+        "functional location",
+        "equipment",
+        "master data",
+        "complete",
+        "correct",
+        "data quality",
+        "quality assurance"
+      ],
+      "confidence_base": 0.9
+    },
+    {
+      "evidence_type": "standards_kb",
+      "key": "PTG120504-001",
+      "value": "functional_location_hierarchy",
+      "source_name": "PTG 12.05.04 - PMMS.md",
+      "source_ref": "Page 83, lines 2614-2705",
+      "evidence_text": "Example of OPUs for Level 3A Functional Location includes: ASEAN Bintulu Fertilizer Sdn. Bhd., Kertih Port Sdn. Bhd., KLCC Urusharta Sdn. Bhd., Malaysia LNG Dua Sdn. Bhd., Malaysia LNG Sdn. Bhd., Malaysia LNG Tiga Sdn. Bhd., Malaysian Refining Company Sdn. Bhd., PETRONAS Carigali (Turkmenistan) Sdn. Bhd., PETRONAS Carigali Sdn. Bhd., PETRONAS Chemicals Ammonia Sdn. Bhd., PETRONAS Chemicals Aromatics Sdn. Bhd., PETRONAS Chemicals Derivatives Sdn. Bhd., PETRONAS Chemicals Ethylene Sdn. Bhd., PETRONAS Chemicals Fertilizer Kedah Sdn. Bhd., PETRONAS Chemicals Fertilizer Sabah Sdn. Bhd., PETRONAS Chemicals Glycols Sdn. Bhd., PETRONAS Chemicals Isononanol Sdn. Bhd., PETRONAS Chemicals LDPE Sdn. Bhd., PETRONAS Chemicals Methanol Sdn. Bhd., PETRONAS Chemicals MTBE Sdn. Bhd., PETRONAS Chemicals Olefins Sdn. Bhd., PETRONAS Chemicals Polyethylene Sdn. Bhd., PETRONAS Dagangan Berhad, PETRONAS Floating LNG 1 (L) Ltd., PETRONAS Floating LNG 2 (L) Ltd., PETRONAS Gas Berhad, PETRONAS Iraq Garraf Ltd., PETRONAS Penapisan (Melaka) Sdn. Bhd., PETRONAS Penapisan (Terengganu) Sdn. Bhd., PETRONAS Refinery and Petrochemical Corporation Sdn. Bhd., PRPC Utilities and Facilities Sdn. Bhd.",
+      "interpretation": "Level 3A of the functional location hierarchy corresponds to the Operating Unit (OPU) level. The listed entities are valid OPU names to be used at Level 3A. When validating a functional location at Level 3A, the associated OPU description must match one of these recognized entities.",
+      "related_fields": [
+        "Functional Location",
+        "Superior FunctLoc."
+      ],
+      "keywords": [
+        "Level 3A",
+        "functional location",
+        "OPU",
+        "operating unit",
+        "hierarchy"
+      ],
+      "confidence_base": 0.9
+    },
+    {
+      "evidence_type": "standards_kb",
+      "key": "PTG120504-002",
+      "value": "functional_location_hierarchy",
+      "source_name": "PTG 12.05.04 - PMMS.md",
+      "source_ref": "Page 84, lines 2614-2705",
+      "evidence_text": "Example of Level 4A (Block or Cluster) for Offshore Installations: PM313 Block, PM6 Block, SBO Northern Cluster, SKO Northern Fields, SKO Southern Fields, SKG Gas Fields 3, PM12 Block, PM315 Block, PM8 Block, SBO Southern Cluster, SKO Western Fields, SKG Gas Fields 1, PM309 Block, PM318 Block, PM9 Block, Bintulu Oil Fields, SKO Eastern Fields, SKG Gas Fields 2. Example of Level 4A (Plant) for Other Installations: ABF, KLCCUH, Kertih Port, MLNG, MLNG Dua, MLNG Tiga, PC Ammonia, PC Derivatives, MRCSB, PC FK, PC Ethylene, PC Aromatics, PC Iraq, PC INA, PC FS.",
+      "interpretation": "Level 4A of the functional location hierarchy corresponds to Block/Cluster (for offshore installations) or Plant (for other installations). Functional locations at Level 4A must be associated with one of the recognized Block/Cluster or Plant names listed. The Superior FunctLoc. for a Level 4A node must be a valid Level 3A OPU.",
+      "related_fields": [
+        "Functional Location",
+        "Superior FunctLoc."
+      ],
+      "keywords": [
+        "Level 4A",
+        "functional location",
+        "block",
+        "cluster",
+        "plant",
+        "offshore",
+        "hierarchy",
+        "Superior FunctLoc"
+      ],
+      "confidence_base": 0.9
+    },
+    {
+      "evidence_type": "standards_kb",
+      "key": "PTG120504-CAT-001",
+      "value": "catalog_profile",
+      "source_name": "PTG 12.05.04 - PMMS.md",
+      "source_ref": "lines 2706-2819 (Pages 85-86)",
+      "evidence_text": "Appendix 7 lists the valid Catalog Profile codes and their corresponding equipment descriptions as defined in PMMS PTG 12.05.04. Examples include: 1ESH11 = 11KV SWITCHBOARD, 1EGM = AC SYNCHRONOUS GENERATOR (MAIN), 1ICAC = ACTUATOR, 1MSFB = BOILER, 1MRKC = COMPRESSOR CENTRIFUGAL, 1MRKR = COMPRESSOR RECIPROCATING, 1MRKO = COMPRESSOR ROTARY, 1IVCV = CONTROL VALVES, 1IED = DISTRIBUTED CONTROL SYSTEM, etc.",
+      "interpretation": "The Catalog Profile field on an equipment master must contain a code from the PMMS-approved list (Appendix 7). Any code not present in this list is invalid. The code also implies the equipment type/description and should be consistent with the actual equipment being registered.",
+      "related_fields": [
+        "Catalog Profile"
+      ],
+      "keywords": [
+        "catalog profile",
+        "equipment type",
+        "PMMS",
+        "appendix 7",
+        "switchboard",
+        "compressor",
+        "boiler",
+        "actuator",
+        "control valve",
+        "UPS",
+        "battery",
+        "analyser"
+      ],
+      "confidence_base": 0.9
+    },
+    {
+      "evidence_type": "standards_kb",
+      "key": "PTG120504-EQCODE-089-001",
+      "value": "equipment_master_data",
+      "source_name": "PTG 12.05.04 - PMMS.md",
+      "source_ref": "Page 89",
+      "evidence_text": "Equipment type codes and their descriptions as defined in PMMS: 1EWZ2=MOBILE GENERATOR, 1EML1=MOTOR LV INDUCTION (2KW OR GREATER), 1EMDC=MOTOR DC, 1EMDC1=MOTOR DC (2KW OR GREATER), 1EMDC2=MOTOR DC (BELOW 2KW), 1EML2=MOTOR LV INDUCTION (BELOW 2KW), 1EMLS1=MOTOR LV SUBMERSIBLE (2KW OR GREATER), 1EMLS2=MOTOR LV SUBMERSIBLE (BELOW 2KW), 1EMH=MOTOR/GENERATOR HV INDUCTION, 1MRPC=PUMP CENTRIFUGAL, 1MRPR=PUMP RECIPROCATING, 1MRPO=PUMP ROTARY, 1MRPS=PUMP SEALLESS, 1MRPX=PUMP ALL TYPE (<=2KW RATED POWER OUTPUT)",
+      "interpretation": "Equipment type codes must match the PMMS-defined code list. Motor and pump subtypes are distinguished by voltage class (HV/LV), mounting (submersible), drive type (DC/AC), and power rating (2KW threshold). These codes are used for Technical IdentNo. and catalog profile assignment validation.",
+      "related_fields": [
+        "Technical IdentNo.",
+        "Catalog Profile"
+      ],
+      "keywords": [
+        "equipment code",
+        "motor",
+        "pump",
+        "LV",
+        "HV",
+        "submersible",
+        "2KW",
+        "centrifugal",
+        "reciprocating",
+        "rotary",
+        "sealless",
+        "mobile generator",
+        "technical ident"
+      ],
+      "confidence_base": 0.9
+    },
+    {
+      "evidence_type": "standards_kb",
+      "key": "PTG120504-EQCODE-089-002",
+      "value": "equipment_master_data",
+      "source_name": "PTG 12.05.04 - PMMS.md",
+      "source_ref": "Page 89",
+      "evidence_text": "1IPC=PRESSURE CONTROL LOOP, 1IPI=PRESSURE INTERLOCKING LOOP, 1IP=PRESSURE LOOP, 1IEP=PROGRAMMABLE LOGIC CONTROLLER (PLC), 1ISC=SPEED CONTROL LOOP, 1ISI=SPEED INTERLOCK LOOP, 1IS=SPEED LOOP",
+      "interpretation": "Instrumentation and control equipment must use the designated PMMS codes. Control loops, interlock loops, and PLCs each have distinct codes used in equipment master data classification.",
+      "related_fields": [
+        "Technical IdentNo.",
+        "Catalog Profile"
+      ],
+      "keywords": [
+        "pressure loop",
+        "speed loop",
+        "interlock",
+        "PLC",
+        "control loop",
+        "instrumentation",
+        "equipment code"
+      ],
+      "confidence_base": 0.9
+    },
+    {
+      "evidence_type": "standards_kb",
+      "key": "PTG120504-EQCODE-090-001",
+      "value": "equipment_master_data",
+      "source_name": "PTG 12.05.04 - PMMS.md",
+      "source_ref": "Page 90",
+      "evidence_text": "1MSTF=TANK FIXED/REMOVABLE ROOF TYPE ALL SHAPES, 1MSTL=TANK FLOATING ROOF TYPE, 1MSPT=SCRAPER PIG TRAP PIG LAUNCHER, 1MSO=STACK FLARE VENT, 1MSTS=SILO HOPPER, 1MSL=SILENCER, 1IVSD=SHUTDOWN VALVE, 1IVSO=SOLENOID OPERATED VALVE, 1SEF=SAFETY EMERGENCY FACILITIES",
+      "interpretation": "Static equipment, valves, and safety facilities must use the correct PMMS equipment type codes. Tank types are further distinguished by roof type (fixed/floating). These codes govern valid equipment classification in PMMS master data.",
+      "related_fields": [
+        "Technical IdentNo.",
+        "Catalog Profile"
+      ],
+      "keywords": [
+        "tank",
+        "fixed roof",
+        "floating roof",
+        "shutdown valve",
+        "solenoid valve",
+        "flare",
+        "safety",
+        "pig launcher",
+        "equipment code"
+      ],
+      "confidence_base": 0.9
+    },
+    {
+      "evidence_type": "standards_kb",
+      "key": "PWME-001",
+      "value": "functional_location_hierarchy",
+      "source_name": "PWME_PCSB PMMS Work Management Execution_L3 Manual Revision.md",
+      "source_ref": "lines 958-1015 / Page 24",
+      "evidence_text": "Correct equipment number or tag number (Functional Location) shall be identified. Requestor shall specify the location code at the correct level of the Asset Hierarchy, recommended at Level 8. This level shall be specific to enable non-ambiguous identification exercise and accurate cost estimation.",
+      "interpretation": "When referencing equipment or functional locations in notifications/work orders, the Functional Location must be specified at Level 8 of the Asset Hierarchy to ensure unambiguous identification and accurate cost estimation.",
+      "related_fields": [
+        "Functional Location",
+        "Equipment / Tag Number"
+      ],
+      "keywords": [
+        "functional location",
+        "tag number",
+        "asset hierarchy",
+        "level 8",
+        "equipment number"
+      ],
+      "confidence_base": 0.9
+    },
+    {
+      "evidence_type": "standards_kb",
+      "key": "PWME-002",
+      "value": "functional_location_hierarchy",
+      "source_name": "PWME_PCSB PMMS Work Management Execution_L3 Manual Revision.md",
+      "source_ref": "lines 958-1015 / Page 24",
+      "evidence_text": "If equipment tag number is unavailable, requestor shall use the nearest functional location and identify the item in the long text.",
+      "interpretation": "When a specific equipment tag number does not exist, the nearest (superior) functional location in the hierarchy should be used as a fallback, with detailed identification provided in the long text field.",
+      "related_fields": [
+        "Functional Location",
+        "Superior FunctLoc."
+      ],
+      "keywords": [
+        "functional location",
+        "superior functional location",
+        "nearest functional location",
+        "tag number unavailable"
+      ],
+      "confidence_base": 0.9
+    },
+    {
+      "evidence_type": "standards_kb",
+      "key": "PWME-001",
+      "value": "equipment_master_data",
+      "source_name": "PWME_PCSB PMMS Work Management Execution_L3 Manual Revision.md",
+      "source_ref": "lines 1016-1071",
+      "evidence_text": "Planner Group represents the person or team responsible for planning and processing the maintenance work whereas Main Work Center represents technical team/discipline responsible to execute the work. It is defaulted from master data set in Functional Location and shall be updated as necessary to represent the correct party.",
+      "interpretation": "Planner Group and Main Work Center on work orders default from Functional Location master data. Both fields must reflect the correct responsible party and should be updated when the default is not accurate.",
+      "related_fields": [
+        "Planner Group",
+        "Main Work Center"
+      ],
+      "keywords": [
+        "planner group",
+        "main work center",
+        "functional location",
+        "master data",
+        "defaulted"
+      ],
+      "confidence_base": 0.9
+    },
+    {
+      "evidence_type": "standards_kb",
+      "key": "PWME-001",
+      "value": "functional_location_hierarchy",
+      "source_name": "PWME_PCSB PMMS Work Management Execution_L3 Manual Revision.md",
+      "source_ref": "lines 1072-1130",
+      "evidence_text": "Functional Location/Equipment ID provided on the work request must truly reflect where the problem is or where the work is to be performed and is input at the lowest level at which the problem can be identified. For example, if the fault on a firewater pump skid is at the engine, avoid raising higher than skid level.",
+      "interpretation": "When validating a Functional Location or Equipment Tag on a notification or work order, it must be assigned at the lowest identifiable level relevant to the problem. Assigning at a higher-level node when a lower-level node exists is non-compliant.",
+      "related_fields": [
+        "Functional Location",
+        "Equipment Tag"
+      ],
+      "keywords": [
+        "functional location",
+        "equipment tag",
+        "lowest level",
+        "hierarchy",
+        "work request",
+        "notification"
+      ],
+      "confidence_base": 0.9
+    },
+    {
+      "evidence_type": "standards_kb",
+      "key": "PWME-002",
+      "value": "functional_location_structure",
+      "source_name": "PWME_PCSB PMMS Work Management Execution_L3 Manual Revision.md",
+      "source_ref": "lines 1072-1130",
+      "evidence_text": "Validate the Functional Location and/or Equipment Tag identified (as part of Notification screening quality check).",
+      "interpretation": "During notification screening, the Functional Location and Equipment Tag must be explicitly validated as a mandatory quality check step before a notification is approved (SCRN status).",
+      "related_fields": [
+        "Functional Location",
+        "Equipment Tag"
+      ],
+      "keywords": [
+        "functional location",
+        "equipment tag",
+        "notification screening",
+        "validation",
+        "SCRN",
+        "quality check"
+      ],
+      "confidence_base": 0.9
+    },
+    {
+      "evidence_type": "standards_kb",
+      "key": "UDMS-001",
+      "value": "functional_location_structure",
+      "source_name": "UDMS.md",
+      "source_ref": "lines 589-650 (Page 17-18)",
+      "evidence_text": "The Asset Structure is the PMMS representation of the levels and relationship of plant process units, sub units, functional location boundaries and equipment, together with their tag numbers that are installed in respective functional location boundary. A comprehensive Asset Hierarchy is required to run our business and make decisions.",
+      "interpretation": "The Functional Location structure must represent plant process units, sub-units, functional location boundaries, and equipment with tag numbers. A complete Asset Hierarchy covering all these levels is mandatory in PMMS.",
+      "related_fields": [
+        "Functional Location",
+        "Superior FunctLoc."
+      ],
+      "keywords": [
+        "asset structure",
+        "functional location",
+        "asset hierarchy",
+        "plant process units",
+        "sub units",
+        "tag numbers",
+        "PMMS"
+      ],
+      "confidence_base": 0.9
+    },
+    {
+      "evidence_type": "standards_kb",
+      "key": "UDMS-002",
+      "value": "functional_location_structure",
+      "source_name": "UDMS.md",
+      "source_ref": "lines 589-650 (Page 18)",
+      "evidence_text": "Plant convention shall be used as per below: <Location>-<Individual Asset>, <4 characters>-<4 characters>. Example: Resak Central Processing Platform (RECP) is RESK-RECP.",
+      "interpretation": "The Plant (and by extension Functional Location prefix) naming convention must follow the format: 4-character location code hyphen 4-character individual asset code. Both field and individual asset must be identifiable from the plant name.",
+      "related_fields": [
+        "Functional Location"
+      ],
+      "keywords": [
+        "naming convention",
+        "plant",
+        "location",
+        "individual asset",
+        "4 characters",
+        "functional location",
+        "RESK",
+        "RECP"
+      ],
+      "confidence_base": 0.9
+    },
+    {
+      "evidence_type": "standards_kb",
+      "key": "UDMS-003",
+      "value": "functional_location_hierarchy",
+      "source_name": "UDMS.md",
+      "source_ref": "lines 589-650 (Page 18)",
+      "evidence_text": "Planning Plant (M010, M012, and M014) represents the regions in Production Malaysia (PMO, SBO, and SKO). Maintenance plant follows the same configuration - identified as the regional offices.",
+      "interpretation": "The Functional Location hierarchy must align with the organisational structure: Planning Plants map to regional offices (PMO, SBO, SKO), and maintenance plants follow the same regional configuration. Functional locations must be associated with the correct Planning Plant and Maintenance Plant.",
+      "related_fields": [
+        "Functional Location",
+        "Superior FunctLoc."
+      ],
+      "keywords": [
+        "planning plant",
+        "maintenance plant",
+        "region",
+        "PMO",
+        "SBO",
+        "SKO",
+        "M010",
+        "M012",
+        "M014",
+        "hierarchy"
+      ],
+      "confidence_base": 0.9
+    },
+    {
+      "evidence_type": "standards_kb",
+      "key": "UDMS-001",
+      "value": "functional_location_structure",
+      "source_name": "UDMS.md",
+      "source_ref": "Page 19, lines 651-722",
+      "evidence_text": "Equipment shall be installed at each tag position (lowest appropriate level Functional Location). Data model distinctly differentiates the tag and equipment data properties.",
+      "interpretation": "Equipment must be installed at the lowest appropriate Functional Location (tag level). The tag and equipment are distinct objects with separate data properties in SAP/PMMS.",
+      "related_fields": [
+        "Functional Location",
+        "Superior FunctLoc."
+      ],
+      "keywords": [
+        "tag position",
+        "lowest level",
+        "functional location",
+        "equipment installation"
+      ],
+      "confidence_base": 0.9
+    },
+    {
+      "evidence_type": "standards_kb",
+      "key": "UDMS-002",
+      "value": "equipment_master_data",
+      "source_name": "UDMS.md",
+      "source_ref": "Page 19, lines 651-722",
+      "evidence_text": "Manufacturer and model data are captured at the Equipment level. During a breakdown, Equipment, which has a different manufacturer and model, may be installed to replace the malfunctioned Equipment. Thus, the history of the Equipment movement can be captured appropriately.",
+      "interpretation": "Manufacturer and model fields must be populated at the Equipment master level, not at the Functional Location level, to support equipment movement history tracking.",
+      "related_fields": [
+        "Manufacturer",
+        "Model"
+      ],
+      "keywords": [
+        "manufacturer",
+        "model",
+        "equipment level",
+        "movement history"
+      ],
+      "confidence_base": 0.9
+    },
+    {
+      "evidence_type": "standards_kb",
+      "key": "UDMS-003",
+      "value": "functional_location_hierarchy",
+      "source_name": "UDMS.md",
+      "source_ref": "Page 20, lines 651-722",
+      "evidence_text": "A superior Functional Location shall be created in the Maintenance flagged for deletion. This enables an OPU to track and identify them easily from the hierarchy itself.",
+      "interpretation": "Functional Locations that are no longer active should be flagged for deletion rather than removed, so the hierarchy remains traceable within the OPU.",
+      "related_fields": [
+        "Superior FunctLoc.",
+        "Functional Location"
+      ],
+      "keywords": [
+        "superior functional location",
+        "flagged for deletion",
+        "hierarchy",
+        "OPU"
+      ],
+      "confidence_base": 0.9
+    },
+    {
+      "evidence_type": "standards_kb",
+      "key": "UDMS-004",
+      "value": "functional_location_structure",
+      "source_name": "UDMS.md",
+      "source_ref": "Page 21, lines 651-722",
+      "evidence_text": "Functional Locations is defined by SAP as a technical object which is hierarchically structured to represent an asset, PMMS Asset Hierarchy. The lowest appropriate level of this hierarchy is referred to as a tag where Equipment can be installed.",
+      "interpretation": "Functional Locations must follow a hierarchical structure in SAP PMMS. The lowest level is the tag, which is the only level where equipment may be installed.",
+      "related_fields": [
+        "Functional Location",
+        "Superior FunctLoc."
+      ],
+      "keywords": [
+        "functional location",
+        "hierarchy",
+        "tag",
+        "lowest level",
+        "SAP"
+      ],
+      "confidence_base": 0.9
+    },
+    {
+      "evidence_type": "standards_kb",
+      "key": "UDMS-005",
+      "value": "functional_location_hierarchy",
+      "source_name": "UDMS.md",
+      "source_ref": "Page 21, lines 651-722",
+      "evidence_text": "Notification and Work Orders shall be raised at the appropriate system, package, tag or equipment level (lowest possible level) of the Maintenance Asset Hierarchy to ensure that history and cost can be recorded.",
+      "interpretation": "Notifications and Work Orders must reference the lowest appropriate Functional Location or Equipment level to ensure accurate maintenance history and cost tracking.",
+      "related_fields": [
+        "Functional Location"
+      ],
+      "keywords": [
+        "notification",
+        "work order",
+        "lowest level",
+        "maintenance history",
+        "cost",
+        "functional location"
+      ],
+      "confidence_base": 0.9
+    },
+    {
+      "evidence_type": "standards_kb",
+      "key": "UDMS-001",
+      "value": "functional_location_hierarchy",
+      "source_name": "UDMS.md",
+      "source_ref": "lines 723-774 / Page 22-23",
+      "evidence_text": "Location data levels: (a) Group, (b) Country – Country of operations, (c) Block – Operation Blocks, (d) Site/Field – grouping of all plants at a certain geographical location. A site shall not be the parent of another site. This is the highest node in an asset structure.",
+      "interpretation": "The functional location hierarchy above the Plant level follows four location tiers (Group, Country, Block, Site/Field). A Site/Field node must not be a child of another Site/Field node and represents the highest asset structure node.",
+      "related_fields": [
+        "Functional Location",
+        "Superior FunctLoc."
+      ],
+      "keywords": [
+        "location hierarchy",
+        "group",
+        "country",
+        "block",
+        "site",
+        "field",
+        "functional location",
+        "superior functional location"
+      ],
+      "confidence_base": 0.9
+    },
+    {
+      "evidence_type": "standards_kb",
+      "key": "UDMS-002",
+      "value": "functional_location_hierarchy",
+      "source_name": "UDMS.md",
+      "source_ref": "lines 723-774 / Page 22-23",
+      "evidence_text": "Level 0 – Plant: Type plant/unit (e.g. Booster Compressor Platform, FPSO, onshore production facility). A plant shall have one parent site and shall not be the parent of another plant.",
+      "interpretation": "Plant (Level 0) in the functional location hierarchy must have exactly one parent Site/Field and cannot be a parent of another Plant node. Circular or multi-parent plant relationships are invalid.",
+      "related_fields": [
+        "Functional Location",
+        "Superior FunctLoc."
+      ],
+      "keywords": [
+        "plant",
+        "level 0",
+        "functional location",
+        "hierarchy",
+        "parent site"
+      ],
+      "confidence_base": 0.9
+    },
+    {
+      "evidence_type": "standards_kb",
+      "key": "UDMS-003",
+      "value": "functional_location_hierarchy",
+      "source_name": "UDMS.md",
+      "source_ref": "lines 723-774 / Page 22-23",
+      "evidence_text": "Level 1 to 2 – Process Unit / Sub Process Unit: Main section/system of the plant. Can be broken down into sub-system for logical grouping. Refer to Appendix 2 to populate Process Unit & Sub-Process Unit (FLOC L1&2).",
+      "interpretation": "Functional location levels 1 and 2 represent Process Unit and Sub-Process Unit respectively. These must be populated per Appendix 2 guidance and represent major sections/systems of the parent plant.",
+      "related_fields": [
+        "Functional Location",
+        "Superior FunctLoc."
+      ],
+      "keywords": [
+        "process unit",
+        "sub-process unit",
+        "level 1",
+        "level 2",
+        "functional location",
+        "FLOC"
+      ],
+      "confidence_base": 0.9
+    },
+    {
+      "evidence_type": "standards_kb",
+      "key": "UDMS-004",
+      "value": "functional_location_hierarchy",
+      "source_name": "UDMS.md",
+      "source_ref": "lines 723-774 / Page 23",
+      "evidence_text": "Level 3 – Functional Boundary: A grouping of Tags (main and supporting equipment) which provide one main function for delivering intended output.",
+      "interpretation": "Level 3 functional locations represent a Functional Boundary, grouping related tags that together deliver one primary function. Validation should confirm Level 3 FLOCs are parented under a Level 2 Sub-Process Unit.",
+      "related_fields": [
+        "Functional Location",
+        "Superior FunctLoc."
+      ],
+      "keywords": [
+        "functional boundary",
+        "level 3",
+        "functional location",
+        "tag grouping"
+      ],
+      "confidence_base": 0.9
+    },
+    {
+      "evidence_type": "standards_kb",
+      "key": "UDMS-005",
+      "value": "functional_location_structure",
+      "source_name": "UDMS.md",
+      "source_ref": "lines 723-774 / Page 23",
+      "evidence_text": "Level 4 – Tag: An item that provides a single function. Tags are alphanumeric codes and shall be unique within a plant. A Tag is not a piece of equipment; it is the function of a piece of equipment (functional location) where equipment is installed under it. Removing/replacing equipment will not change the tag. A maintainable item shall be identified as a tag and allows equipment to be installed against it. A tag forms part of the Functional Location name.",
+      "interpretation": "Level 4 functional locations (Tags) must be alphanumeric, unique within a plant, and represent a functional position rather than physical equipment. Equipment is installed under the Tag; the Tag itself persists through equipment changes. Tags must be used as the installation point for equipment master records.",
+      "related_fields": [
+        "Functional Location",
+        "Superior FunctLoc."
+      ],
+      "keywords": [
+        "tag",
+        "level 4",
+        "functional location",
+        "alphanumeric",
+        "unique",
+        "equipment installation",
+        "maintainable item"
+      ],
+      "confidence_base": 0.9
+    },
+    {
+      "evidence_type": "standards_kb",
+      "key": "UDMS-FL-001",
+      "value": "functional_location_hierarchy",
+      "source_name": "UDMS.md",
+      "source_ref": "lines 775-858 (Page 23-24)",
+      "evidence_text": "It is not necessary to have the same number of Functional Location levels for all facilities. A more complex facility may have more Functional Location levels compared to a simple facility. The hierarchy is to be built logically with the minimum number of levels to allow ease of search.",
+      "interpretation": "The FL hierarchy depth is flexible per facility complexity. Validation should not enforce a fixed number of levels, but should confirm logical parent-child relationships exist.",
+      "related_fields": [
+        "Functional Location",
+        "Superior FunctLoc."
+      ],
+      "keywords": [
+        "functional location",
+        "hierarchy",
+        "levels",
+        "facility",
+        "complexity"
+      ],
+      "confidence_base": 0.9
+    },
+    {
+      "evidence_type": "standards_kb",
+      "key": "UDMS-FL-002",
+      "value": "functional_location_structure",
+      "source_name": "UDMS.md",
+      "source_ref": "lines 775-858 (Page 24)",
+      "evidence_text": "Plant Structure levels: 0=Plant, 1=Process Unit, 2=Sub-Process Unit, 3=Functional Boundary, 4=Tag. Example: Plant=RECP, Process Unit=RECP-GCOM, Sub-Process Unit=RECP-GCOM.BCT1, Functional Boundary=RECP-GCOM.BCT1-P303PK, Tag=RECP-GCOM.BCT1-P303PK-K303H.",
+      "interpretation": "Functional Locations follow a defined 5-level plant structure (levels 0-4). Each level's code must be prefixed with its parent's code, separated by hyphens or dots. Validation should confirm FL codes follow this hierarchical naming pattern.",
+      "related_fields": [
+        "Functional Location",
+        "Superior FunctLoc."
+      ],
+      "keywords": [
+        "plant structure",
+        "process unit",
+        "sub-process unit",
+        "functional boundary",
+        "tag",
+        "hierarchy levels",
+        "naming convention"
+      ],
+      "confidence_base": 0.9
+    },
+    {
+      "evidence_type": "standards_kb",
+      "key": "UDMS-FL-003",
+      "value": "functional_location_structure",
+      "source_name": "UDMS.md",
+      "source_ref": "lines 775-858 (Page 26-27)",
+      "evidence_text": "Functional Location name shall contain the engineering tag number and labelled Functional Location naming convention. Each OPU shall have a tag numbering procedure and standard for Functional Location naming. Tag numbers shall come from engineering documents and shall not be renamed in any other applications. Tag numbers shall also be identical in all IT or non-IT applications. Functional Location shall contain no commas and special characters first digit uppercase followed by lower case. Description shall be within 40 characters limit (including spaces).",
+      "interpretation": "FL names must: (1) match engineering tag numbers exactly, (2) contain no commas or special characters, (3) start with an uppercase character followed by lowercase, (4) have descriptions of 40 characters or fewer including spaces. These are mandatory data requirements.",
+      "related_fields": [
+        "Functional Location"
+      ],
+      "keywords": [
+        "functional location name",
+        "tag number",
+        "naming convention",
+        "no commas",
+        "special characters",
+        "uppercase",
+        "40 characters",
+        "description limit",
+        "mandatory"
+      ],
+      "confidence_base": 0.9
+    },
+    {
+      "evidence_type": "standards_kb",
+      "key": "UDMS-4.8-001",
+      "value": "functional_location_structure",
+      "source_name": "UDMS.md",
+      "source_ref": "lines 859-934",
+      "evidence_text": "Piping in the plant should be grouped according to respective numbering which has been established and should be treated as tag number. The PMMS Blueprint states piping functional locations follow a 5-level hierarchy: Level 0=Plant, Level 1=Process Unit, Level 2=Sub-Process Unit, Level 3=Functional Boundary (Circuit ID), Level 4=Tag (Circuit ID + Line Number combined).",
+      "interpretation": "Piping functional locations must follow a 5-level hierarchy. The Circuit ID forms Level 3 (Functional Boundary), and at Level 4 (Tag), the circuit ID and line number are concatenated with all dashes removed to comply with PMMS character limitations.",
+      "related_fields": [
+        "Functional Location",
+        "Superior FunctLoc."
+      ],
+      "keywords": [
+        "piping",
+        "functional location",
+        "naming convention",
+        "circuit ID",
+        "line number",
+        "hierarchy",
+        "tag",
+        "functional boundary"
+      ],
+      "confidence_base": 0.9
+    },
+    {
+      "evidence_type": "standards_kb",
+      "key": "UDMS-4.8-002",
+      "value": "functional_location_hierarchy",
+      "source_name": "UDMS.md",
+      "source_ref": "lines 859-934",
+      "evidence_text": "Only the circuit ID will be taken as the Functional Boundary Functional Location. At Tag level, the circuit ID and the line number will be combined to accommodate PMMS Functional Location limitation characters. Thus all dash (-) [are removed] from the Functional Location.",
+      "interpretation": "At Level 3, only the Circuit ID is used as the functional location name. At Level 4 (Tag), circuit ID and line number are concatenated and all dashes must be removed. Validation should reject dashes in piping Tag-level functional location names.",
+      "related_fields": [
+        "Functional Location",
+        "Superior FunctLoc."
+      ],
+      "keywords": [
+        "circuit ID",
+        "line number",
+        "dash removal",
+        "tag level",
+        "functional boundary",
+        "character limitation"
+      ],
+      "confidence_base": 0.9
+    },
+    {
+      "evidence_type": "standards_kb",
+      "key": "UDMS-4.9-001",
+      "value": "functional_location_structure",
+      "source_name": "UDMS.md",
+      "source_ref": "lines 859-934",
+      "evidence_text": "Categories are indicators that differentiate functional locations according to how they are used. Categories: A=Surface Assets (Topsides), B=Sub-Surface Assets (boundary at X-tree flowline flanges), C=Group and Country Level, D=Organizational Level. Data Requirement: Mandatory (Business and System).",
+      "interpretation": "The Category field on a Functional Location is mandatory and must be one of four valid values: A (Surface Assets), B (Sub-Surface Assets), C (Group and Country Level), or D (Organizational Level). Any functional location missing a category or with an invalid category value should be flagged.",
+      "related_fields": [
+        "Functional Location"
+      ],
+      "keywords": [
+        "category",
+        "surface assets",
+        "sub-surface assets",
+        "group level",
+        "country level",
+        "organizational level",
+        "mandatory"
+      ],
+      "confidence_base": 0.9
+    },
+    {
+      "evidence_type": "standards_kb",
+      "key": "UDMS-4.10-001",
+      "value": "functional_location_structure",
+      "source_name": "UDMS.md",
+      "source_ref": "lines 859-934",
+      "evidence_text": "Description: Data Requirement: Mandatory (Business). Describe the Functional Location in a meaningful and clear description.",
+      "interpretation": "The Description field of a Functional Location is mandatory from a business perspective. Functional locations with blank or non-meaningful descriptions should be flagged as non-compliant.",
+      "related_fields": [
+        "Functional Location"
+      ],
+      "keywords": [
+        "description",
+        "functional location",
+        "mandatory",
+        "meaningful"
+      ],
+      "confidence_base": 0.9
+    },
+    {
+      "evidence_type": "standards_kb",
+      "key": "UDMS-4.8-003",
+      "value": "functional_location_structure",
+      "source_name": "UDMS.md",
+      "source_ref": "lines 859-934",
+      "evidence_text": "Example piping FL structure: Level 0 Plant=BADA, Level 1 Process Unit=BADA-GPIP, Level 2 Sub-Process Unit=BADA-GPIP.PING, Level 3 Functional Boundary=BADA-GPIP.PING-01A, Level 4 Tag=BADA-GPIP.PING-01A100P0086101X",
+      "interpretation": "The naming pattern for piping functional locations concatenates parent code with child segment using dash (-) as separator between levels 0-3, and a period (.) between Level 1 and Level 2. At Level 4 the line number portion is appended directly with no dashes. Validation should confirm this pattern.",
+      "related_fields": [
+        "Functional Location"
+      ],
+      "keywords": [
+        "piping",
+        "functional location",
+        "naming pattern",
+        "level",
+        "concatenation",
+        "period",
+        "dash",
+        "example"
+      ],
+      "confidence_base": 0.9
+    },
+    {
+      "evidence_type": "standards_kb",
+      "key": "UDMS-935-001",
+      "value": "functional_location_structure",
+      "source_name": "UDMS.md",
+      "source_ref": "lines 935-1019",
+      "evidence_text": "Shall not contain special characters except dash and underscore. Shall not include Equipment properties, e.g. Equipment type, manufacturer, model, size etc.",
+      "interpretation": "Functional Location description must use only alphanumeric characters, dashes, and underscores. It must describe function/location, not equipment properties like type, manufacturer, or model.",
+      "related_fields": [
+        "Functional Location",
+        "Description"
+      ],
+      "keywords": [
+        "special characters",
+        "description",
+        "functional location",
+        "equipment properties",
+        "manufacturer",
+        "model"
+      ],
+      "confidence_base": 0.9
+    },
+    {
+      "evidence_type": "standards_kb",
+      "key": "UDMS-935-002",
+      "value": "functional_location_structure",
+      "source_name": "UDMS.md",
+      "source_ref": "lines 935-1019",
+      "evidence_text": "Safety Critical Element (SCE) user status is mandatory for all functional locations identified as SCE. Inactive functional locations will have status (INAK) whereby no Work Order creation is allowed.",
+      "interpretation": "All SCE-designated functional locations must carry the SCE user status. Inactive FLOCs must be set to INAK status.",
+      "related_fields": [
+        "Functional Location",
+        "Object Status"
+      ],
+      "keywords": [
+        "SCE",
+        "object status",
+        "INAK",
+        "inactive",
+        "user status",
+        "system status"
+      ],
+      "confidence_base": 0.9
+    },
+    {
+      "evidence_type": "standards_kb",
+      "key": "UDMS-935-003",
+      "value": "catalog_profile",
+      "source_name": "UDMS.md",
+      "source_ref": "lines 935-1019",
+      "evidence_text": "Technical Object Type shall be correctly assigned as this is the main link to Task Lists, Bill of Materials (BOMs) and Catalogue Profiles (failure codes).",
+      "interpretation": "The Technical Object Type drives the Catalog Profile (failure codes) linkage; it must be correctly assigned on both Functional Location and Equipment to ensure valid catalog profile association.",
+      "related_fields": [
+        "Functional Location",
+        "Equipment",
+        "Technical Object Type",
+        "Catalog Profile"
+      ],
+      "keywords": [
+        "technical object type",
+        "catalog profile",
+        "failure codes",
+        "BOM",
+        "task list"
+      ],
+      "confidence_base": 0.9
+    },
+    {
+      "evidence_type": "standards_kb",
+      "key": "UDMS-935-004",
+      "value": "equipment_master_data",
+      "source_name": "UDMS.md",
+      "source_ref": "lines 935-1019",
+      "evidence_text": "Technical Object Type list shall be assigned to Functional Location and Equipment (where installed). Technical Object Type shall be consistent at both Functional Location and Equipment level to allow consistent reporting.",
+      "interpretation": "Equipment master data must have a Technical Object Type that matches the one assigned at the Functional Location level for consistency in reporting.",
+      "related_fields": [
+        "Equipment",
+        "Technical Object Type",
+        "Functional Location"
+      ],
+      "keywords": [
+        "technical object type",
+        "equipment",
+        "functional location",
+        "consistency",
+        "reporting"
+      ],
+      "confidence_base": 0.9
+    },
+    {
+      "evidence_type": "standards_kb",
+      "key": "UDMS-ABC-001",
+      "value": "abc_indicator",
+      "source_name": "UDMS.md",
+      "source_ref": "lines 1020-1093",
+      "evidence_text": "ABC Indicator is assigned to the Functional Location, not to the Equipment. This is because the Functional Location or Tag represents a firm place in a system or process while the Equipment may be installed at different Functional Locations over time.",
+      "interpretation": "ABC Indicator must be set on the Functional Location record, never on the Equipment record directly.",
+      "related_fields": [
+        "ABC Indicator",
+        "Functional Location"
+      ],
+      "keywords": [
+        "ABC Indicator",
+        "Functional Location",
+        "equipment",
+        "criticality"
+      ],
+      "confidence_base": 0.9
+    },
+    {
+      "evidence_type": "standards_kb",
+      "key": "UDMS-ABC-002",
+      "value": "abc_indicator",
+      "source_name": "UDMS.md",
+      "source_ref": "lines 1020-1093",
+      "evidence_text": "Every maintainable item shall have ABC indicator assigned. Functional Location at system level (i.e. at functional boundary) shall also have ABC indicator assigned.",
+      "interpretation": "ABC Indicator is mandatory for all maintainable Functional Locations and for Functional Locations at the system/functional boundary level; no maintainable FLOC may be left without an ABC Indicator.",
+      "related_fields": [
+        "ABC Indicator",
+        "Functional Location"
+      ],
+      "keywords": [
+        "ABC Indicator",
+        "mandatory",
+        "maintainable",
+        "functional boundary",
+        "system level"
+      ],
+      "confidence_base": 0.9
+    },
+    {
+      "evidence_type": "standards_kb",
+      "key": "UDMS-ABC-003",
+      "value": "abc_indicator",
+      "source_name": "UDMS.md",
+      "source_ref": "lines 1020-1093 (Page 32)",
+      "evidence_text": "Have ABC criticality individually assessed against all functional locations in a structure, this is because all functional locations in a structure does not necessary follow that of its parent functional location.",
+      "interpretation": "Each FLOC in a hierarchy must have its ABC Indicator independently assessed; inheriting the parent FLOC's ABC value is not acceptable.",
+      "related_fields": [
+        "ABC Indicator",
+        "Functional Location"
+      ],
+      "keywords": [
+        "ABC Indicator",
+        "individual assessment",
+        "hierarchy",
+        "parent",
+        "structure"
+      ],
+      "confidence_base": 0.9
+    },
+    {
+      "evidence_type": "standards_kb",
+      "key": "UDMS-ABC-004",
+      "value": "abc_indicator",
+      "source_name": "UDMS.md",
+      "source_ref": "lines 1020-1093",
+      "evidence_text": "Criticality is defined in terms of the consequences of failure of the asset, refer to PETRONAS Risk Assessment Matrix. The criticality shall assigned requires the approval of the Technical Authority from the appropriate discipline.",
+      "interpretation": "The ABC Indicator value must be based on the PETRONAS Risk Assessment Matrix consequence-of-failure criteria and requires Technical Authority approval before assignment.",
+      "related_fields": [
+        "ABC Indicator",
+        "Functional Location"
+      ],
+      "keywords": [
+        "ABC Indicator",
+        "criticality",
+        "PETRONAS Risk Assessment Matrix",
+        "Technical Authority",
+        "approval"
+      ],
+      "confidence_base": 0.9
+    },
+    {
+      "evidence_type": "standards_kb",
+      "key": "UDMS-WC-001",
+      "value": "equipment_master_data",
+      "source_name": "UDMS.md",
+      "source_ref": "lines 1020-1093 (Page 32)",
+      "evidence_text": "Data Requirement: Mandatory (Business) for Tag and/or Functional Boundary Level. Where there exists multiple Main Work Centers (mechanical, electrical, instrument etc.), responsible for the Functional Location, the main one shall be entered. Usage of Multi-Discipline Work Center (XMULTI) is not encouraged as it dilutes the accountability over the technical object.",
+      "interpretation": "Main Work Center is mandatory at Tag/Functional Boundary level. When multiple disciplines share responsibility, only the primary Work Center is entered; use of XMULTI is discouraged.",
+      "related_fields": [
+        "Main Work Center",
+        "Functional Location"
+      ],
+      "keywords": [
+        "Main Work Center",
+        "mandatory",
+        "tag",
+        "functional boundary",
+        "XMULTI",
+        "planner group"
+      ],
+      "confidence_base": 0.9
+    },
+    {
+      "evidence_type": "standards_kb",
+      "key": "UDMS-PG-001",
+      "value": "equipment_master_data",
+      "source_name": "UDMS.md",
+      "source_ref": "lines 1020-1093 (Page 33)",
+      "evidence_text": "Data Requirement: Mandatory (Business) for Tag and/or Functional Boundary Level. Planner Group is a group of employees or an individual responsible for planning and processing maintenance tasks (work orders) in a plant.",
+      "interpretation": "Planner Group is mandatory at Tag/Functional Boundary level and must be populated to ensure correct work order routing and follow-up notification creation.",
+      "related_fields": [
+        "Planner Group",
+        "Main Work Center",
+        "Functional Location"
+      ],
+      "keywords": [
+        "Planner Group",
+        "mandatory",
+        "tag",
+        "functional boundary",
+        "work order",
+        "notification"
+      ],
+      "confidence_base": 0.9
+    },
+    {
+      "evidence_type": "standards_kb",
+      "key": "UDMS-CP-001",
+      "value": "catalog_profile",
+      "source_name": "UDMS.md",
+      "source_ref": "lines 1020-1093 (Page 33)",
+      "evidence_text": "Data Requirement: Mandatory (Business) for Tag and/or Functional Boundary Level. Catalog Profile is used for technical history reporting for work that has been performed.",
+      "interpretation": "Catalog Profile is mandatory at the Tag/Functional Boundary level; it must be assigned to enable technical history reporting on completed work.",
+      "related_fields": [
+        "Catalog Profile",
+        "Functional Location"
+      ],
+      "keywords": [
+        "Catalog Profile",
+        "mandatory",
+        "tag",
+        "functional boundary",
+        "technical history",
+        "reporting"
+      ],
+      "confidence_base": 0.9
+    },
+    {
+      "evidence_type": "standards_kb",
+      "key": "UDMS-001",
+      "value": "catalog_profile",
+      "source_name": "UDMS.md",
+      "source_ref": "lines 1094-1180",
+      "evidence_text": "The Catalog Profile shall be assigned in relation to the Object Type.",
+      "interpretation": "When validating equipment or functional location master data, the Catalog Profile must correspond to the Object Type of the functional location or equipment. A mismatch between Catalog Profile and Object Type is invalid.",
+      "related_fields": [
+        "Catalog Profile",
+        "Object Type"
+      ],
+      "keywords": [
+        "catalog profile",
+        "object type",
+        "notification",
+        "object part",
+        "damage"
+      ],
+      "confidence_base": 0.9
+    },
+    {
+      "evidence_type": "standards_kb",
+      "key": "UDMS-002",
+      "value": "equipment_master_data",
+      "source_name": "UDMS.md",
+      "source_ref": "lines 1094-1180",
+      "evidence_text": "A naming convention shall be used as per below: <Location>-<Individual Asset> <4 characters>-<4 characters>. Example: Resak Central Processing Platform (RECP) is RESK-RECP",
+      "interpretation": "The Location field must follow the format of exactly 4 characters for the location code, a hyphen, and 4 characters for the individual asset code. Entries not matching this pattern are invalid.",
+      "related_fields": [
+        "Location"
+      ],
+      "keywords": [
+        "location",
+        "naming convention",
+        "4 characters",
+        "plant maintenance",
+        "organisational structure"
+      ],
+      "confidence_base": 0.9
+    },
+    {
+      "evidence_type": "standards_kb",
+      "key": "UDMS-003",
+      "value": "functional_location_structure",
+      "source_name": "UDMS.md",
+      "source_ref": "lines 1094-1180",
+      "evidence_text": "The general class F_F_GENERAL is assigned to all functional locations and an SCE classification F_F_SCE shall be assigned to all functional locations that have been identified as SCEs.",
+      "interpretation": "Every functional location must have the F_F_GENERAL class assigned. Functional locations identified as Safety Critical Elements (SCE) must also have the F_F_SCE class assigned. Missing either class assignment is a validation error.",
+      "related_fields": [
+        "Functional Location",
+        "Functional Location Class",
+        "Characteristics"
+      ],
+      "keywords": [
+        "functional location class",
+        "F_F_GENERAL",
+        "F_F_SCE",
+        "SCE",
+        "safety critical elements",
+        "characteristics"
+      ],
+      "confidence_base": 0.9
+    },
+    {
+      "evidence_type": "standards_kb",
+      "key": "UDMS-004",
+      "value": "functional_location_structure",
+      "source_name": "UDMS.md",
+      "source_ref": "lines 1094-1180",
+      "evidence_text": "[DISCIPLINE] Shall be populated with technical object responsible discipline. [SCE APPLICABLE] Shall be populated with value Y (YES) if it is an SCE or N (No) if it is not.",
+      "interpretation": "For all functional locations with the F_FL_GENERAL class, the DISCIPLINE characteristic must be populated. The SCE APPLICABLE characteristic must contain either 'Y' or 'N'. Blank or invalid values are not permitted.",
+      "related_fields": [
+        "Functional Location",
+        "Characteristics",
+        "DISCIPLINE",
+        "SCE APPLICABLE"
+      ],
+      "keywords": [
+        "discipline",
+        "SCE applicable",
+        "F_FL_GENERAL",
+        "characteristics",
+        "mandatory"
+      ],
+      "confidence_base": 0.9
+    },
+    {
+      "evidence_type": "standards_kb",
+      "key": "UDMS_FL_OPT_FIELDS_001",
+      "value": "equipment_master_data",
+      "source_name": "UDMS.md",
+      "source_ref": "lines 1181-1261 (Page 37)",
+      "evidence_text": "The following standard SAP fields are not required for functional location, will not be used in PMMS. The ones with an asterisk (*) are fields required for Equipment but not in Functional Location master: Size/Dimension*, Manufacturer and Country*, Model*, Manufacturer Part Number*, Manufacturer Serial Number*.",
+      "interpretation": "Fields marked with asterisk (Size/Dimension, Manufacturer and Country, Model, Manufacturer Part Number, Manufacturer Serial Number) are required for Equipment master records but must NOT be populated on Functional Location master records. Validation should flag these fields if populated on a Functional Location.",
+      "related_fields": [
+        "Manufacturer",
+        "Model",
+        "Manufacturer Part Number",
+        "Manufacturer Serial Number",
+        "Size/Dimension"
+      ],
+      "keywords": [
+        "manufacturer",
+        "model",
+        "manufacturer part number",
+        "manufacturer serial number",
+        "equipment",
+        "functional location",
+        "optional",
+        "not required"
+      ],
+      "confidence_base": 0.9
+    },
+    {
+      "evidence_type": "standards_kb",
+      "key": "UDMS_FL_INHERIT_001",
+      "value": "functional_location_hierarchy",
+      "source_name": "UDMS.md",
+      "source_ref": "lines 1181-1261 (Page 38)",
+      "evidence_text": "Some field parameters of child functional locations can be inherited from their parents. Recommendations: Maintenance Plant - Categorized by Asset Area generally unchanged within the Hierarchy from that level downwards; Location - Can be inherited by lower-level; Room - Can be inherited by lower-level; Plant Section - Can be inherited by lower-level; Company Code - Categorized by OPU unchanged within the hierarchy; Planning Plant - Categorized by OPU unchanged within the hierarchy.",
+      "interpretation": "Child functional locations should inherit Maintenance Plant, Location, Room, Plant Section, Company Code, and Planning Plant from their parent where practical. Validation should check that these fields are consistent down the hierarchy and not contradicting parent values without justification.",
+      "related_fields": [
+        "Maintenance Plant",
+        "Location",
+        "Room",
+        "Plant Section",
+        "Company Code",
+        "Planning Plant"
+      ],
+      "keywords": [
+        "inheritance",
+        "child functional location",
+        "parent",
+        "maintenance plant",
+        "location",
+        "planning plant",
+        "company code",
+        "hierarchy"
+      ],
+      "confidence_base": 0.9
+    },
+    {
+      "evidence_type": "standards_kb",
+      "key": "UDMS_FL_PIPING_001",
+      "value": "functional_location_structure",
+      "source_name": "UDMS.md",
+      "source_ref": "lines 1181-1261 (Page 36)",
+      "evidence_text": "Circuit ID: Shall be populated for all piping Tag level Functional Location. Line Number: Shall be populated for all piping Tag level Functional Location.",
+      "interpretation": "For any Functional Location classified at piping Tag level, both Circuit ID and Line Number characteristics must be populated. Validation should flag piping Tag level FLs missing either of these fields.",
+      "related_fields": [
+        "Circuit ID",
+        "Line Number"
+      ],
+      "keywords": [
+        "circuit ID",
+        "line number",
+        "piping",
+        "tag level",
+        "functional location",
+        "mandatory"
+      ],
+      "confidence_base": 0.9
+    },
+    {
+      "evidence_type": "standards_kb",
+      "key": "UDMS-039-001",
+      "value": "abc_indicator",
+      "source_name": "UDMS.md",
+      "source_ref": "lines 1262-1338 (Page 39)",
+      "evidence_text": "ABC Indicator: Required review and assignment for each Operational Package and Tag level. NOT RECOMMENDED FOR INHERITANCE.",
+      "interpretation": "ABC Indicator must be individually reviewed and assigned at each Functional Location level (Operational Package and Tag); it must not be simply inherited from a parent level.",
+      "related_fields": [
+        "ABC Indicator"
+      ],
+      "keywords": [
+        "ABC Indicator",
+        "inheritance",
+        "Operational Package",
+        "Tag level",
+        "individual assignment"
+      ],
+      "confidence_base": 0.9
+    },
+    {
+      "evidence_type": "standards_kb",
+      "key": "UDMS-039-002",
+      "value": "catalog_profile",
+      "source_name": "UDMS.md",
+      "source_ref": "lines 1262-1338 (Page 39)",
+      "evidence_text": "Catalog Profile: Required review and assignment for each Operational Package and Tag level. NOT RECOMMENDED FOR INHERITANCE.",
+      "interpretation": "Catalog Profile must be individually reviewed and assigned at each Functional Location level; it must not be simply inherited from a parent level.",
+      "related_fields": [
+        "Catalog Profile"
+      ],
+      "keywords": [
+        "Catalog Profile",
+        "inheritance",
+        "Operational Package",
+        "Tag level",
+        "individual assignment"
+      ],
+      "confidence_base": 0.9
+    },
+    {
+      "evidence_type": "standards_kb",
+      "key": "UDMS-039-003",
+      "value": "equipment_master_data",
+      "source_name": "UDMS.md",
+      "source_ref": "lines 1262-1338 (Page 39)",
+      "evidence_text": "Main Work Center and Associated Plant: Required review and assignment for each Operational Package and Tag level. NOT RECOMMENDED FOR INHERITANCE.",
+      "interpretation": "Main Work Center and Associated Plant must be individually reviewed and assigned at each Functional Location or equipment level; inheritance from parent is not recommended.",
+      "related_fields": [
+        "Main Work Center",
+        "Associated Plant"
+      ],
+      "keywords": [
+        "Main Work Center",
+        "Associated Plant",
+        "inheritance",
+        "Operational Package",
+        "Tag level"
+      ],
+      "confidence_base": 0.9
+    },
+    {
+      "evidence_type": "standards_kb",
+      "key": "UDMS-039-004",
+      "value": "equipment_master_data",
+      "source_name": "UDMS.md",
+      "source_ref": "lines 1262-1338 (Page 39)",
+      "evidence_text": "Equipment is an individual physical object which fulfils a particular function. It can be maintained and costs and history can be recorded. Equipment can be installed and/or dismantled from a Tag position (Functional Location).",
+      "interpretation": "Equipment in SAP/PMMS represents a physical object tied to a Functional Location (Tag). It can be moved between functional locations if specifications match.",
+      "related_fields": [
+        "Equipment Category",
+        "Equipment Description",
+        "Equipment Name"
+      ],
+      "keywords": [
+        "equipment",
+        "functional location",
+        "tag",
+        "install",
+        "dismantle",
+        "physical object"
+      ],
+      "confidence_base": 0.9
+    },
+    {
+      "evidence_type": "standards_kb",
+      "key": "UDMS-039-005",
+      "value": "equipment_master_data",
+      "source_name": "UDMS.md",
+      "source_ref": "lines 1262-1338 (Page 39-40)",
+      "evidence_text": "Equipment category indicate what type of equipment are being used. I.e. equal to category of corresponding Functional Location (Exceptions PRT equipment). Categories: A=Surface Equipment (Topsides), B=Sub-Surface Equipment, C=Production resource/tool.",
+      "interpretation": "Equipment Category must match the category of its corresponding Functional Location, except for PRT (Production Resource/Tool) equipment. Valid values are A (Surface), B (Sub-Surface), C (PRT).",
+      "related_fields": [
+        "Equipment Category"
+      ],
+      "keywords": [
+        "Equipment Category",
+        "A",
+        "B",
+        "C",
+        "Surface",
+        "Sub-Surface",
+        "PRT",
+        "Functional Location category"
+      ],
+      "confidence_base": 0.9
+    },
+    {
+      "evidence_type": "standards_kb",
+      "key": "UDMS-039-006",
+      "value": "equipment_master_data",
+      "source_name": "UDMS.md",
+      "source_ref": "lines 1262-1338 (Page 40)",
+      "evidence_text": "Equipment Description rules: 1. Shall not contain special characters except dash and underscore. 2. Shall not describe the function of the Equipment as this is described in the Functional Location description. 3. Shall not contain the tag identifier as it can be installed in various Functional Locations. 4. Shall not contain Manufacturer and model specific information as there are dedicated fields for those data.",
+      "interpretation": "Equipment Description must describe the equipment type only (e.g. 'Reciprocating Pump'), using no special characters (except dash/underscore), no functional descriptions, no tag identifiers, and no manufacturer/model information. Those details belong in dedicated fields.",
+      "related_fields": [
+        "Equipment Description"
+      ],
+      "keywords": [
+        "Equipment Description",
+        "special characters",
+        "tag identifier",
+        "manufacturer",
+        "model",
+        "function",
+        "naming rule"
+      ],
+      "confidence_base": 0.9
+    },
+    {
+      "evidence_type": "standards_kb",
+      "key": "UDMS-5.8-manufacturer",
+      "value": "equipment_master_data",
+      "source_name": "UDMS.md",
+      "source_ref": "lines 1339-1429 (Page 41-42)",
+      "evidence_text": "Manufacturer data is an equipment specific data. It is useful for reliability analysis of equipment by a specific Manufacturer (or brand) to support business decisions. Manufacturer Country is automatically derived as the Headquarters of the manufacturer itself.",
+      "interpretation": "Manufacturer and Country of Manufacturer fields are Strongly Recommended for all equipment. Country is auto-derived from manufacturer headquarters; manual entry should be validated against this.",
+      "related_fields": [
+        "Manufacturer",
+        "Country of Manufacturer"
+      ],
+      "keywords": [
+        "manufacturer",
+        "country of manufacturer",
+        "reliability analysis",
+        "strongly recommended"
+      ],
+      "confidence_base": 0.9
+    },
+    {
+      "evidence_type": "standards_kb",
+      "key": "UDMS-5.9-model-number",
+      "value": "equipment_master_data",
+      "source_name": "UDMS.md",
+      "source_ref": "lines 1339-1429 (Page 41-42)",
+      "evidence_text": "The Manufacturer Model Number defined by the Manufacturer shall be unique and the Manufacturer-Model Number correlation can be assembled together to form an Equipment Model Catalog. Model number shall be assigned when it is considered as essential information for reliability analysis and can be used to influence business decisions.",
+      "interpretation": "Model Number is Strongly Recommended. It must be unique per manufacturer. Should be populated when reliability analysis or safety decisions depend on identifying specific equipment models.",
+      "related_fields": [
+        "Model Number"
+      ],
+      "keywords": [
+        "model number",
+        "manufacturer model",
+        "equipment model catalog",
+        "strongly recommended",
+        "unique"
+      ],
+      "confidence_base": 0.9
+    },
+    {
+      "evidence_type": "standards_kb",
+      "key": "UDMS-5.10-part-number",
+      "value": "equipment_master_data",
+      "source_name": "UDMS.md",
+      "source_ref": "lines 1339-1429 (Page 42)",
+      "evidence_text": "Part number is given by the manufacturer and which allows him to manage objects of the same category. Can be used for procurement purpose.",
+      "interpretation": "Manufacturer Part Number is Strongly Recommended. It is manufacturer-assigned and used for procurement. Should be validated as present especially for procurable equipment.",
+      "related_fields": [
+        "Manufacturer Part Number"
+      ],
+      "keywords": [
+        "part number",
+        "manufacturer part number",
+        "procurement",
+        "strongly recommended"
+      ],
+      "confidence_base": 0.9
+    },
+    {
+      "evidence_type": "standards_kb",
+      "key": "UDMS-5.11-serial-number",
+      "value": "equipment_master_data",
+      "source_name": "UDMS.md",
+      "source_ref": "lines 1339-1429 (Page 42)",
+      "evidence_text": "Serial number shall be recorded to track statutory equipment, such as relief valves, cranes, etc. Serial number shall be recorded when there is a potential need to send the equipment for repair so that the equipment can be accurately identified.",
+      "interpretation": "Manufacturer Serial Number is Strongly Recommended and mandatory in practice for statutory equipment (e.g. relief valves, cranes) and equipment subject to repair. Validates presence for these equipment categories.",
+      "related_fields": [
+        "Manufacturer Serial Number"
+      ],
+      "keywords": [
+        "serial number",
+        "statutory equipment",
+        "relief valve",
+        "crane",
+        "repair",
+        "strongly recommended"
+      ],
+      "confidence_base": 0.9
+    },
+    {
+      "evidence_type": "standards_kb",
+      "key": "UDMS-5.12-equipment-class",
+      "value": "equipment_master_data",
+      "source_name": "UDMS.md",
+      "source_ref": "lines 1339-1429 (Page 42)",
+      "evidence_text": "Equipment class is a method to categorise Equipment and to capture specific Characteristics. Only characteristics required for reporting, search and analysis to support business decision making will be captured. A standard list of Classes and Characteristics are centrally controlled by the PMMS team. Changes to these lists shall be endorsed by them.",
+      "interpretation": "Equipment Class assignment is Mandatory (Business). Only PMMS-team-approved classes and characteristics should be used. Validation should check that assigned classes exist in the centrally controlled standard list.",
+      "related_fields": [
+        "Equipment Class",
+        "Characteristics"
+      ],
+      "keywords": [
+        "equipment class",
+        "characteristics",
+        "PMMS team",
+        "centrally controlled",
+        "mandatory"
+      ],
+      "confidence_base": 0.9
+    },
+    {
+      "evidence_type": "standards_kb",
+      "key": "UDMS-001",
+      "value": "equipment_master_data",
+      "source_name": "UDMS.md",
+      "source_ref": "Page 43-44 (lines 1430-1511)",
+      "evidence_text": "Some field parameters are set such that certain properties of the Equipment can be defined based on the Functional Location where it is being installed. The following fields are inherited from Functional Location where it is being installed: Maintenance Plant, Location, Room, Plant Section, ABC indicator, Company Code, Cost Centre or WBS Element, Planning Plant, Planner Group, Main Work Centre and Associated Plant*, Catalog Profile*.",
+      "interpretation": "Equipment master data fields such as ABC Indicator, Location, Catalog Profile, Planner Group, and Work Center are inherited from the superior Functional Location. Validation should check that these fields on equipment are consistent with the values on the installed Functional Location.",
+      "related_fields": [
+        "ABC Indicator",
+        "Location",
+        "Catalog Profile",
+        "Planner Group",
+        "Work Center"
+      ],
+      "keywords": [
+        "inheritance",
+        "ABC indicator",
+        "Catalog Profile",
+        "Planner Group",
+        "Work Center",
+        "Functional Location",
+        "equipment",
+        "installed"
+      ],
+      "confidence_base": 0.9
+    },
+    {
+      "evidence_type": "standards_kb",
+      "key": "UDMS-002",
+      "value": "catalog_profile",
+      "source_name": "UDMS.md",
+      "source_ref": "Page 44 (lines 1430-1511)",
+      "evidence_text": "Catalog Profile* and Main Work Centre and Associated Plant* Shall be assigned for equipment where maintenance work needs to be done after dismantling the equipment. For example, during RV certification history needs to be recorded in SAP.",
+      "interpretation": "Catalog Profile and Main Work Centre must be explicitly assigned to equipment that requires maintenance after dismantling (e.g. relief valves requiring certification). These fields are not optional for such equipment even if normally inherited from Functional Location.",
+      "related_fields": [
+        "Catalog Profile",
+        "Work Center"
+      ],
+      "keywords": [
+        "Catalog Profile",
+        "Main Work Centre",
+        "dismantling",
+        "certification",
+        "RV",
+        "assigned"
+      ],
+      "confidence_base": 0.9
+    },
+    {
+      "evidence_type": "standards_kb",
+      "key": "UDMS-003",
+      "value": "equipment_master_data",
+      "source_name": "UDMS.md",
+      "source_ref": "Page 43 (lines 1430-1511)",
+      "evidence_text": "The following standard SAP fields are not required for equipment, will not be used in PMMS. Some of the fields are already inputted in Functional Location master: Sort Field, Standing Order, Settlement Order, Position.",
+      "interpretation": "Sort Field, Standing Order, Settlement Order, and Position should not be populated on equipment master records in PMMS. Validation should flag these fields if populated.",
+      "related_fields": [
+        "Sort Field",
+        "Standing Order",
+        "Settlement Order",
+        "Position"
+      ],
+      "keywords": [
+        "not required",
+        "Sort Field",
+        "Standing Order",
+        "Settlement Order",
+        "Position",
+        "equipment",
+        "PMMS"
+      ],
+      "confidence_base": 0.9
+    },
+    {
+      "evidence_type": "standards_kb",
+      "key": "UDMS-004",
+      "value": "equipment_master_data",
+      "source_name": "UDMS.md",
+      "source_ref": "Page 45 (lines 1430-1511)",
+      "evidence_text": "Main Work Centre: Principle Group that is responsible for the particular Functional Location (and Equipment). Main Work Centres are responsible for the overall management of the maintenance work. Usage of Multi-Discipline Work Centre is not encouraged as it dilutes the accountability over the technical object.",
+      "interpretation": "Each Functional Location and associated Equipment should have a single-discipline Main Work Centre assigned. Multi-discipline Work Centres should be flagged during validation as non-compliant with PMMS standards.",
+      "related_fields": [
+        "Work Center",
+        "Planner Group"
+      ],
+      "keywords": [
+        "Main Work Centre",
+        "single discipline",
+        "multi-discipline",
+        "accountability",
+        "Functional Location",
+        "equipment"
+      ],
+      "confidence_base": 0.9
+    },
+    {
+      "evidence_type": "standards_kb",
+      "key": "UDMS-WC-001",
+      "value": "equipment_master_data",
+      "source_name": "UDMS.md",
+      "source_ref": "Page 47-48, lines 1512-1598",
+      "evidence_text": "Main Work Centers saved in Functional Location and Equipment (if installed) will be automatically transferred to the Notification or Work Order when they are raised against the FL or Equipment.",
+      "interpretation": "The Main Work Center field on Functional Location and Equipment master data must be populated correctly as it auto-populates Work Orders and Notifications; this field is mandatory for equipment master data validation.",
+      "related_fields": [
+        "Work Center",
+        "Main Work Center",
+        "Planner Group"
+      ],
+      "keywords": [
+        "Work Center",
+        "Main Work Center",
+        "Functional Location",
+        "Equipment",
+        "automatic transfer"
+      ],
+      "confidence_base": 0.9
+    },
+    {
+      "evidence_type": "standards_kb",
+      "key": "UDMS-WC-002",
+      "value": "equipment_master_data",
+      "source_name": "UDMS.md",
+      "source_ref": "Page 47-48, lines 1512-1598",
+      "evidence_text": "The Work Centre needs to be unique and clearly identify the organizational unit responsible to manage the work or perform the maintenance work execution. The SAP field allows 8 alphanumeric characters. It could be made up of a 2 digit asset and a 4 digit code abbreviating the activity type or discipline of the department or group.",
+      "interpretation": "Work Center names must be unique, up to 8 alphanumeric characters, following the format <2-char Asset><4-char Activity/Discipline>. Validation should check uniqueness and length constraints.",
+      "related_fields": [
+        "Work Center"
+      ],
+      "keywords": [
+        "Work Center",
+        "naming convention",
+        "8 alphanumeric",
+        "unique",
+        "asset code",
+        "discipline"
+      ],
+      "confidence_base": 0.9
+    },
+    {
+      "evidence_type": "standards_kb",
+      "key": "UDMS-WC-003",
+      "value": "equipment_master_data",
+      "source_name": "UDMS.md",
+      "source_ref": "Page 47-48, lines 1512-1598",
+      "evidence_text": "Main Work Centre shall indicate the responsible Supervisor or Team Leader. Operation Work Center shall indicate the craft or discipline responsible for work execution.",
+      "interpretation": "Main Work Center on equipment/FL master data must represent the responsible Supervisor or Team Leader; Operation Work Center must represent the craft or discipline. Validation should confirm these are distinct and correctly assigned.",
+      "related_fields": [
+        "Work Center",
+        "Main Work Center"
+      ],
+      "keywords": [
+        "Main Work Center",
+        "Operation Work Center",
+        "Supervisor",
+        "Team Leader",
+        "craft",
+        "discipline"
+      ],
+      "confidence_base": 0.9
+    },
+    {
+      "evidence_type": "standards_kb",
+      "key": "UDMS-001",
+      "value": "functional_location_hierarchy",
+      "source_name": "UDMS.md",
+      "source_ref": "lines 2585-2669",
+      "evidence_text": "Ensure that the Functional Location is assigned at the right level in the hierarchy keeping in mind the cost and history will be recorded against this level.",
+      "interpretation": "The Functional Location assigned to a Maintenance Item must reflect the correct hierarchy level, as costs and maintenance history are recorded at that level. Assigning at too high or too low a level will misrepresent cost and history data.",
+      "related_fields": [
+        "Functional Location",
+        "Superior FunctLoc."
+      ],
+      "keywords": [
+        "functional location",
+        "hierarchy",
+        "cost",
+        "history",
+        "level"
+      ],
+      "confidence_base": 0.9
+    },
+    {
+      "evidence_type": "standards_kb",
+      "key": "UDMS-002",
+      "value": "equipment_master_data",
+      "source_name": "UDMS.md",
+      "source_ref": "lines 2585-2669",
+      "evidence_text": "Main Work Center: Can be inherited from the Reference Object in the Maintenance Item. It should be the main discipline or craft, which will manage the overall Work Order. For Work Orders involving multiple disciplines, it should be the discipline that is in charge of it or has the most work hours assigned.",
+      "interpretation": "The Work Center field on equipment/maintenance items should reflect the primary responsible discipline or craft. It may be inherited from the reference object (Functional Location or Equipment) but can be overridden to a more appropriate value.",
+      "related_fields": [
+        "work center",
+        "planner group"
+      ],
+      "keywords": [
+        "work center",
+        "discipline",
+        "craft",
+        "planner group",
+        "inherited",
+        "reference object"
+      ],
+      "confidence_base": 0.9
+    },
+    {
+      "evidence_type": "standards_kb",
+      "key": "UDMS-003",
+      "value": "equipment_master_data",
+      "source_name": "UDMS.md",
+      "source_ref": "lines 2585-2669",
+      "evidence_text": "Maintenance Planner Group can be inherited from the Reference Object. It can, however, be changed to a more suitable Planner Group. It should identify the appropriate responsible party.",
+      "interpretation": "The Planner Group may be inherited from the associated Functional Location or Equipment master data but must identify the correct responsible maintenance planning party. Validation should confirm the planner group is appropriate for the reference object.",
+      "related_fields": [
+        "planner group"
+      ],
+      "keywords": [
+        "planner group",
+        "inherited",
+        "reference object",
+        "responsible party",
+        "maintenance item"
+      ],
+      "confidence_base": 0.9
+    },
+    {
+      "evidence_type": "standards_kb",
+      "key": "UDMS-3015-001",
+      "value": "functional_location_structure",
+      "source_name": "UDMS.md",
+      "source_ref": "lines 3015-3054",
+      "evidence_text": "All mandatory Functional Location data object is complete and in compliance with PMMS design requirements: Functional location naming convention, Functional Location Description, Planning Plant, Maintenance Plant, Criticality (ABC Indicator) assigned correctly, Catalog Profile (lowest level of FLOC), etc.",
+      "interpretation": "Every Functional Location record must have a compliant naming convention, description, planning plant, maintenance plant, ABC indicator, and catalog profile (at the lowest FLOC level) populated and validated against PMMS design requirements.",
+      "related_fields": [
+        "Functional Location",
+        "Planning Plant",
+        "Maintenance Plant"
+      ],
+      "keywords": [
+        "functional location",
+        "naming convention",
+        "planning plant",
+        "maintenance plant",
+        "ABC indicator",
+        "catalog profile",
+        "lowest level",
+        "FLOC",
+        "mandatory"
+      ],
+      "confidence_base": 0.9
+    },
+    {
+      "evidence_type": "standards_kb",
+      "key": "UDMS-3015-002",
+      "value": "catalog_profile",
+      "source_name": "UDMS.md",
+      "source_ref": "lines 3015-3054",
+      "evidence_text": "Catalog Profile (lowest level of FLOC)",
+      "interpretation": "The Catalog Profile field is mandatory and must be assigned at the lowest level of the Functional Location hierarchy only.",
+      "related_fields": [
+        "Catalog Profile",
+        "Functional Location"
+      ],
+      "keywords": [
+        "catalog profile",
+        "lowest level",
+        "FLOC",
+        "functional location"
+      ],
+      "confidence_base": 0.9
+    },
+    {
+      "evidence_type": "standards_kb",
+      "key": "UDMS-3015-003",
+      "value": "abc_indicator",
+      "source_name": "UDMS.md",
+      "source_ref": "lines 3015-3054",
+      "evidence_text": "Criticality (ABC Indicator) assigned correctly for both Functional Location and Equipment data objects. All equipment is reviewed for criticality and classification assigned in PMMS. Structured documented process, based on consequences of failure in the operating context, followed to identify production criticality.",
+      "interpretation": "The ABC Indicator (criticality) must be correctly assigned for every Functional Location and Equipment record, based on a documented criticality assessment process considering consequences of failure in the operating context.",
+      "related_fields": [
+        "ABC Indicator",
+        "Functional Location",
+        "Equipment"
+      ],
+      "keywords": [
+        "ABC indicator",
+        "criticality",
+        "consequences of failure",
+        "production criticality",
+        "functional location",
+        "equipment"
+      ],
+      "confidence_base": 0.9
+    },
+    {
+      "evidence_type": "standards_kb",
+      "key": "UDMS-3015-004",
+      "value": "equipment_master_data",
+      "source_name": "UDMS.md",
+      "source_ref": "lines 3015-3054",
+      "evidence_text": "All mandatory Equipment data object is complete and in compliance with PMMS design requirements: Equipment naming convention, Equipment Description, Criticality (ABC Indicator) assigned correctly, Manufacturer, etc.",
+      "interpretation": "Every Equipment master record must have a compliant naming convention, description, ABC indicator, and manufacturer field populated and validated against PMMS design requirements.",
+      "related_fields": [
+        "Equipment",
+        "ABC Indicator",
+        "Manufacturer"
+      ],
+      "keywords": [
+        "equipment",
+        "naming convention",
+        "description",
+        "ABC indicator",
+        "manufacturer",
+        "mandatory",
+        "PMMS"
+      ],
+      "confidence_base": 0.9
+    },
+    {
+      "evidence_type": "standards_kb",
+      "key": "UDMS-TQ-001",
+      "value": "functional_location_hierarchy",
+      "source_name": "UDMS.md",
+      "source_ref": "Page 92, lines 3055-3086",
+      "evidence_text": "Asset Hierarchy setup is in compliance with PMMS design requirements with any special case of deviations justified and approved as a minimum by the PMMS custodian. Each equipment master shall assigned as one-to-one relation with FLOC, with the latter use to identify the tag number.",
+      "interpretation": "Every equipment master record must have a one-to-one relationship with a Functional Location (FLOC), and the FLOC must be used to identify the tag number. Deviations from the asset hierarchy design require PMMS custodian approval.",
+      "related_fields": [
+        "Superior FunctLoc.",
+        "Functional Location"
+      ],
+      "keywords": [
+        "asset hierarchy",
+        "FLOC",
+        "one-to-one",
+        "tag number",
+        "PMMS custodian",
+        "deviation"
+      ],
+      "confidence_base": 0.9
+    },
+    {
+      "evidence_type": "standards_kb",
+      "key": "UDMS-TQ-002",
+      "value": "functional_location_structure",
+      "source_name": "UDMS.md",
+      "source_ref": "Page 92, lines 3055-3086",
+      "evidence_text": "All Functional Location data object is complete, accurate and in compliance with PMMS design minimum requirements. Verified on handover (Greenfield) and every major plant change/ FIP and/ or 5 yearly.",
+      "interpretation": "All Functional Location fields must be complete and accurate per PMMS design minimum requirements. Compliance is verified at handover and every major plant change or 5-yearly review.",
+      "related_fields": [
+        "Functional Location"
+      ],
+      "keywords": [
+        "functional location",
+        "complete",
+        "accurate",
+        "PMMS design",
+        "minimum requirements",
+        "handover",
+        "5 yearly"
+      ],
+      "confidence_base": 0.9
+    },
+    {
+      "evidence_type": "standards_kb",
+      "key": "UDMS-TQ-003",
+      "value": "equipment_master_data",
+      "source_name": "UDMS.md",
+      "source_ref": "Page 92-93, lines 3055-3086",
+      "evidence_text": "All Equipment data object is complete and in compliance with PMMS design minimum requirements. Verified on handover (Greenfield) and every major plant change/ FIP and/ or 5 yearly. All equipment is assigned a criticality, based on likelihood and consequences of failure or legislation, in the current defined operating context.",
+      "interpretation": "All equipment master data fields must be complete per PMMS minimum standards. Each equipment record must have a criticality assignment (ABC Indicator) based on likelihood and consequence of failure or legislative requirements.",
+      "related_fields": [
+        "Catalog Profile",
+        "ABC Indicator"
+      ],
+      "keywords": [
+        "equipment master",
+        "complete",
+        "criticality",
+        "ABC indicator",
+        "likelihood",
+        "consequence",
+        "PMMS design",
+        "minimum requirements"
+      ],
+      "confidence_base": 0.9
+    },
+    {
+      "evidence_type": "standards_kb",
+      "key": "UDMS-TQ-004",
+      "value": "equipment_master_data",
+      "source_name": "UDMS.md",
+      "source_ref": "Page 92, lines 3055-3086",
+      "evidence_text": "The Asset Register in PMMS complete and accurate for all equipment, apart from updates arising from physical changes within last three months. Verified on handover (Greenfield) and every major plant change/ FIP and/ or 5 yearly.",
+      "interpretation": "The asset register (including inventory/equipment records) must be complete and accurate for all equipment. Updates from physical changes are allowed within a 3-month grace period.",
+      "related_fields": [
+        "Inventory Number"
+      ],
+      "keywords": [
+        "asset register",
+        "complete",
+        "accurate",
+        "physical changes",
+        "handover",
+        "5 yearly",
+        "inventory"
+      ],
+      "confidence_base": 0.9
+    }
+  ],
+  "usage": {
+    "input_tokens": 831787,
+    "output_tokens": 31307,
+    "total_tokens": 863094
+  },
+  "source": "claude_built_standards_kb"
+}

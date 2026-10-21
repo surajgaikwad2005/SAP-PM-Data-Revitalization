@@ -1,0 +1,131 @@
+# SKA_MPG_MWC_PMMS.pptx — Maintenance Planner Group -> approved Work
+# Centre family, keyed by DISCIPLINE (not a flat list).
+#
+# PP2 (client-redesigned, 2026-09-24): only the BOS entry's
+# discipline_work_centres is read (Bokor/Betty/Laila/Bakau — see
+# validation.py's _pp2_bokor_work_centres). PP2 no longer derives a
+# discipline from OPWKCEN/summed WORK hours at all — a Deep Agent
+# classifies the required discipline directly from each operation's own
+# OPDESC + full LONGTEXT, and that discipline is looked up here to get
+# the real Bokor Work Centre code. CP2/MEW/MEN are kept for reference
+# but are not currently read by any pain-point check.
+#
+# Only BOS/CP2/MEW/MEN are confirmed present in the Bokor data as
+# surveyed (§9 item 6); the full table beyond these four needs client
+# confirmation and must be added here, never guessed.
+planner_groups:
+  # Slide 2 ("List Of Planner Group & Main Work Center"), column header
+  # row "OS | ELEC | MECH | MULTI | PROD | INST | MATCO" (INST column is
+  # labeled with the SYST-suffixed code for every MPG in this table), row
+  # "BO/BE/LA/BK | BOS | BELEC | BMECH | BMULTI | BPROD | BSYST | WMATCO"
+  # — BOS covers Bokor/Betty/Laila/Bakau. Verified directly against the
+  # source pptx.
+  BOS:
+    discipline_work_centres:
+      MECH: BMECH
+      ELEC: BELEC
+      INST: BSYST
+      PROD: BPROD
+      MATCO: WMATCO
+      # MULTI/BMULTI is NOT listed here in the source pptx table, but PP2
+      # adds it as a valid recommendation target in code
+      # (_pp2_bokor_work_centres) — per the client's 2026-09-24
+      # redesign, BMULTI is a legitimate multi-skill Work Centre when an
+      # operation genuinely requires more than one discipline, never
+      # automatically treated as non-compliant.
+  # Slide 9 ("CMPE Cluster | Location | Planner Group | Main Work
+  # Center"), row "CMPE Cluster 2 | BARONIA, TUKAU TIMUR, BOKOR, BETTY,
+  # LAILA, BAKAU | CP2 | CP2ELEC | CP2MECH | CP2INST" — the CMPE-team
+  # parallel structure covering the same Bokor-area locations as BOS.
+  # Verified directly against the source pptx.
+  CP2:
+    discipline_work_centres:
+      MECH: CP2MECH
+      ELEC: CP2ELEC
+      INST: CP2INST
+  # Slide 3 confirms MEW (WESTERN area: Bakau/Betty/Bokor/Laila) and MEN
+  # (NORTHERN area: Baronia/Tukau Timur) as real MPG codes covering
+  # Bokor-area locations, but no explicit MEW-row/MEN-row Work Centre
+  # list exists in this document the way BOS/CP2 have one (slides 4-8's
+  # "Office team" SKO-/SKG- prefixed tables do not map cleanly back to
+  # MEW/MEN by MPG code). Genuinely open — needs client confirmation,
+  # not a guessed list. See §9 item 6.
+  MEW:
+    discipline_work_centres: {}
+  MEN:
+    discipline_work_centres: {}
+
+# NOT READ by the current PP2 (client-redesigned, 2026-09-24) — kept as
+# real, cited reference data, not deleted, in case a future check needs
+# it. UDMS §9.17 — no MULTI-type Work Centre is allowed at operation
+# level. Verified directly against the real files: OPWKCEN carries
+# TMULTI (743 rows) and BMULTI (264 rows); Main Work Center carries
+# BMULTI (83 rows). The literal string "MULTI" alone never appears —
+# match any value containing one of these as a substring, not an
+# exact-equality check.
+multi_work_centre_variants:
+  - BMULTI
+  - TMULTI
+  - MULTI
+
+# NOT READ by the current PP2 (client-redesigned, 2026-09-24) — the
+# discipline required by an operation is now determined by a Deep Agent
+# reading the operation's own OPDESC+LONGTEXT (validation.py's
+# _ask_agent_pp2_classify_discipline), never by normalizing the CURRENT
+# OPWKCEN code the way this table was built for. Kept as real, cited
+# reference data, not deleted, in case a future check needs it.
+#
+# Discipline normalization for OPWKCEN codes (SAP PM intent: OPWKCEN is a
+# Work Centre CODE, not itself a discipline — BMECH/CP2MECH/SKO-STAT all
+# mean "Mechanical" but are different codes for different Planner
+# Groups). Two tiers:
+#
+# 1. explicit_discipline_codes — codes the source pptx names outright.
+#    Cited per entry; never extend this list without a citation.
+# 2. suffix_discipline_patterns — for every other code, match by the
+#    naming-convention suffix (e.g. "...MECH" -> MECH). This is a
+#    pattern inference, not a citation. Order matters: longest/most-
+#    specific suffix first, so e.g. "SYST" doesn't shadow a code that
+#    also ends in "INST".
+explicit_discipline_codes:
+  # Slide 5 ("Reference MWC for Office team"), Mechanical Static & Piping
+  # section: "Mechanical Static | QTO21 | QTG21 | SKO-STAT | SKG-STAT"
+  SKO-STAT: MECH
+  SKG-STAT: MECH
+  # Slide 6, "Rotating Machinery Maintenance | QTO71 | QTG71 | SKO-ROTA |
+  # SKG-ROTA" — rotating machinery is a Mechanical discipline.
+  SKO-ROTA: MECH
+  SKG-ROTA: MECH
+  # Slide 6, "Pipeline | QTO81 | QTG81 | SKO-PIPE | SKG-PIPE" — piping is
+  # grouped under the Mechanical-family "Pipeline & Structural" section.
+  SKO-PIPE: MECH
+  SKG-PIPE: MECH
+  # Slide 5, "Electrical | QTO3 | QTG3 | SKO-ELEC | SKG-ELEC"
+  SKO-ELEC: ELEC
+  SKG-ELEC: ELEC
+  # Slide 5, "Instrument | QTO42 | QTG42 | SKO-INST | SKG-INST"
+  SKO-INST: INST
+  SKG-INST: INST
+  # Slide 5, "Measurement | QTO41 | QTG41 | SKO-MTR | SKG-MTR" —
+  # Measurement is grouped under the same "Measurement & Instrument"
+  # section as Instrument (QTO4/QTG4).
+  SKO-MTR: INST
+  SKG-MTR: INST
+
+# Fallback tier only — a suffix match here is a naming-convention
+# inference, not a document citation. PP2 must record in Reason when a
+# Finding relied on this tier. Longest/most-specific suffixes first.
+suffix_discipline_patterns:
+  - suffix: MECH
+    discipline: MECH
+  - suffix: ELEC
+    discipline: ELEC
+  - suffix: INST
+    discipline: INST
+  - suffix: SYST
+    discipline: INST   # Slide 2: the INST column is labeled with the
+                        # SYST-suffixed code for every MPG (e.g. BSYST is
+                        # BOS's INST-column entry) — SYST is this
+                        # taxonomy's spelling of Instrument/System.
+  - suffix: PROD
+    discipline: PROD
